@@ -1,0 +1,53 @@
+$main-font: 'Comfortaa', 'Helvetica', 'serif';
+
+
+.account-box {
+    background-color: #8C325B;
+    margin: 5% auto 0 auto;
+    max-width: 503px;
+    height: 100%;
+    .account-input {
+        display: grid;
+        margin-top: 40px;
+        margin-left: 90px;
+        max-width: 335px;
+        row-gap: 2ch;
+        padding-bottom: 80px;
+        input {
+            color: #8C325B;
+            max-width: 335px;
+            height: 30px;
+            text-align: center;
+            background-color: #FFE4F5;
+            border: 0;
+            font-size: 2ch;
+            font-family:$main-font;
+        }
+
+        button {
+            text-transform: uppercase;
+            height: 40px;
+            border-radius: 2ch;
+            font-size: 2ch;
+            border: 0;
+            background-color: #AE6DAB;
+            color: #FFE4F5;
+            font-family:$main-font;
+            letter-spacing: 1px; 
+        }
+    }
+    p {
+        letter-spacing: 1px; 
+        font-weight: bold;
+        text-align: center;
+        font-size: 2.5em;
+        text-transform: uppercase;
+        color: #FFF4FB;
+    }
+    img {
+        margin-left: 28%;
+        margin-top: 5%;
+        max-width: 306px;
+        max-height: 120px;
+      }
+}

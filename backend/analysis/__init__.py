@@ -1,0 +1,2 @@
+from .anime_activites_rec import AnimeActivityRec
+from .anime_review_rec import AnimeReviewRec

@@ -1,0 +1,107 @@
+$main-font: 'Comfortaa', 'Helvetica', 'serif';
+
+.App-header {
+    background-color: #8C325B;
+    color: #FFF4FB;
+    text-transform: uppercase;
+    .nav-bar{
+      padding: 0 10px;
+      margin: auto;
+      height: 70px;
+      img {
+        max-width: 90px;
+        max-height: 40px;
+        float: left;
+        margin-top:-15px;
+        align-items: center;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: #FFF4FB;
+        text-transform: uppercase;
+        font-family: $main-font;
+        font-size: 1.8ch;
+
+      }
+
+      a, button {
+        display: flex;
+        float: left;
+        align-items: center;
+        margin-left:20px;
+        margin-top:10px;
+        background-color: transparent;
+      }
+      a:link {
+        color: #FFF4FB;
+        text-decoration: none;
+      }
+      
+      a:visited {
+          color: #FFD8D0;
+          text-decoration: none;
+      }
+        
+      a:hover, a:focus button:hover {
+          color: #FFE4F5;
+          text-decoration: underline;
+      }
+        
+      a:active {
+          color: #FFDDEB;
+          text-decoration: none;
+      } 
+
+      .main-navbar {
+        .main-link{
+          float: left;
+        }
+       
+      }
+
+      .login-bar {
+        input {
+          background-color: #FFDDEB;
+          border: none;
+          border-radius: 1.5ch;
+          width:200px;
+          font-family: $main-font;
+          color:#8C325B;
+        }
+
+        button {
+          background-color: transparent;
+          color: #FFDDEB;
+          border:none;
+          margin-right:10px;
+          border-radius: 1.5ch;
+        }
+
+        button:hover {
+          background-color: #FFDDEB;
+          color: #8C325B;
+        }
+
+        input, button {
+          margin-top: 8px;
+          height:20px;
+        }
+
+       
+        .login-link, input, button, .search-btn{
+          float: right;
+        }
+      }
+      
+
+    }
+    .menu {
+      align-items: center;
+      padding: 16px 15px 14px 10px;
+    }
+  }
+
+
+

@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&display=swap');
+@import 'components/styles/navbar.scss';
+@import 'components/styles/accounts_mgmt.scss';
+@import 'components/styles/profile.scss';
+
+body {
+  font-family:'Comfortaa', 'Helvetica', 'serif';
+  background-color: #ffe4f5;
+}
+
+.welcome {
+  img {
+    width: 100%;
+  }
+}
+
