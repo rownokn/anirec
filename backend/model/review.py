@@ -27,7 +27,7 @@ class Review(ORM):
                 clause += f' and user_id=%s '
                 values.append(user_id)
             
-            sql = f'select * from {cls.tablename} where  1=1 {clause}'
+            sql = f'select a.name, r.description, r.summary, r.score, r.anime_id, a.cover_image from {cls.tablename} r join anime a on r.anime_id=a.id where  1=1 {clause}'
             cursor.execute(sql, values)
             return cursor.fetchall()
     

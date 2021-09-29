@@ -57,9 +57,17 @@ class Anime(ORM):
             cursor.execute(sql)
             return cursor.fetchall()
     
+    @classmethod
+    def get_anime_by_name(cls, anime_name):
+        with cls.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"select id, name, cover_image from {cls.tablename} where name ilike %s  "
+            values = ['%' + anime_name + '%']
+            cursor.execute(sql,values)
+            return cursor.fetchall()
 
 
-    def search_anime(search):
+    def detailed_anime(cls, search):
         pass
 
 

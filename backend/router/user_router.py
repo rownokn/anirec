@@ -16,17 +16,20 @@ def login():
     data = request.get_json()
     username = data.get('username')
     password = UserInfo.hash_password(data.get('password'))
-
-    account = UserInfo.authenticate(username, password)
-    if account:
-        access_token = create_access_token(identity = account.username)
-        refresh_token = create_refresh_token(identity = account.username)
-        account.session_id = access_token
-        account.update()
-        return jsonify({"session_id": access_token, "user_id": account.id,
-                        "username": account.username, "auth":True})
-    return jsonify({"session_id": "",
+    try:
+        account = UserInfo.authenticate(username, password)
+        if account:
+            access_token = create_access_token(identity = account.username)
+            refresh_token = create_refresh_token(identity = account.username)
+            account.session_id = access_token
+            account.update()
+            return jsonify({"session_id": access_token, "user_id": account.id,
+                            "username": account.username, "auth":True})
+    except TypeError:
+        return jsonify({"session_id": "",
                     "username": "", "msg": "Invalid Username or Password"}), 401
+    
+    
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -38,15 +41,33 @@ def register():
     UserInfo.register(email,session_id,username,password)
     return jsonify({"msg": "Register Successful", "username": username})
 
-@app.route('/manage_activity/<user_id>/<anime_id>', methods=['POST'])
-def manage_activity(user_id, anime_id):
+@app.route('/manage_activity', methods=['POST'])
+@jwt_required()
+def manage_activity():
     data = request.get_json()
     id = data.get('id')
     status = data.get('status')
     score = data.get('score')
     progress = data.get('episode_watched')
+    user_id = data.get('user_id')
+    anime_id = data.get('anime_id')
     UserInfo.manage_user_activity(status, progress, score, user_id, anime_id, id)
     return jsonify({"msg": "You have now added this anime to your library"})
+
+@app.route('/display_activity', methods=['POST'])
+@jwt_required()
+def display_user_activity_anime():
+    data = request.get_json()
+    anime_id = data.get('anime_id')
+    user_id = data.get('user_id')
+    activities = UserInfo.display_user_activity_by_anime(user_id, anime_id)
+    return jsonify({"activities": activities})
+
+@app.route('/delete_activity/<user_id>/<anime_id>/<id>', methods=['DELETE'])
+@jwt_required()
+def delete_user_activity(user_id, anime_id, id):
+    UserInfo.delete_user_activity(user_id, anime_id, id)
+    return jsonify({'msg': 'Activity Deleted'})
 
 @app.route('/add_favorite', methods=['POST'])
 @jwt_required()
@@ -58,14 +79,10 @@ def add_favorite():
     return jsonify({'msg': 'Anime Added To Favorites'})
 
 @app.route('/delete_favorite/<user_id>/<anime_id>/<id>', methods=['DELETE'])
+@jwt_required()
 def delete_favorite(user_id, anime_id):
     UserInfo.delete_favorite(user_id, anime_id, id)
     return jsonify({'msg': 'Anime Deleted From Favorites'})
-    
-@app.route('/delete_favorite/<user_id>/<anime_id>/<id>', methods=['DELETE'])
-def delete_user_activity(user_id, anime_id):
-    UserInfo.delete_user_activity(user_id, anime_id, id)
-    return jsonify({'msg': 'Activity Deleted'})
     
 @app.route('/user_activity', methods=['POST'])
 @jwt_required()

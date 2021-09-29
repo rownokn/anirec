@@ -11,9 +11,8 @@ const AnimeReviews = ({anime_id}) => {
     try {
       const response = await fetch(`http://localhost:5000/anime/reviews/${anime_id}`);
       const info = await response.json()
-      console.log(info)
       setAnimeReview(info.anime_reviews)
-
+      
     }catch (err){
       setIsError(true)
     }
@@ -32,7 +31,7 @@ const AnimeReviews = ({anime_id}) => {
         <div className='reviews'>
           <div className='title'>
           <span className='score'>Score: {rev.score}%</span>
-          <span className='summary'>{rev.sumary}</span>
+          <span className='summary'><p dangerouslySetInnerHTML={{__html: rev.sumary}} /></span>
           </div>
           <div className='body'>{rev.description}</div>
         </div>

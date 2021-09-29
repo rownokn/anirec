@@ -33,7 +33,7 @@ class Users(ORM):
     
     @classmethod
     def token_authenticate(cls, session_id):
-        with cls.conn as conn:
+        with cls.db_conn as conn:
             cur = conn.cursor()
             sql = f"select  id, email, session_id, username, password from {cls.tablename} where session_id=%s"
             cur.execute(sql, [session_id,])
@@ -70,7 +70,7 @@ class UserAnimeActivity(ORM):
             sql = f'''
                       select a.cover_image, a.name, ua.status,  
                       ua.episode_watched || '/' || a.episodes as progress,  
-                      ua.score from {cls.tablename} ua 
+                      ua.score, ua.anime_id from {cls.tablename} ua 
                       join anime a on ua.anime_id=a.id 
                       where  ua.user_id=%s;
                    '''
@@ -79,13 +79,18 @@ class UserAnimeActivity(ORM):
             
     
     @classmethod
-    def find_by_animeid_and_userid(cls, user_id, anime_id):
+    def find_by_animeid_and_userid(cls,anime_id, user_id):
         with cls.db_conn as conn:
             cursor = conn.cursor()
-            sql = f'select a.cover_image, a.name, ua.status, ua.episode_watched, ua.score from {cls.tablename} ua join anime a on ua.anime_id=a.id  where ua.user_id=%s and ua.anime_id=%s'
-            values = [user_id, anime_id]
+            sql = f'''select status, episode_watched, score, 
+                      id from {cls.tablename}
+                      where anime_id=%s'''
+            values = [anime_id]
+            if user_id != 'undefined':
+                 sql += ' and user_id=%s'
+                 values.append(user_id)
             cursor.execute(sql, values)
-            return cursor.fetchall()
+            return cursor.fetchone()
 
 
 class UserFavoriteAnime(ORM):

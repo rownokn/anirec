@@ -1,25 +1,28 @@
-import React, {useState} from 'react'
-import { useParams } from 'react-router-dom';
+import React from 'react'
 import OtherUserAnime from './OtherUserAnime';
-import AnimeCharacterSummary from './AnimeCharacterSummary';
+import {Link, useRouteMatch} from 'react-router-dom'
 
 const AnimeSummary = ({animeInfo, anime_id}) => {
+  let { url } = useRouteMatch();
 
   
   return (
     <div>
         <div className='anime-summary'>
           <h1>{animeInfo.name}</h1>
-        {animeInfo.summary}
+          <p  dangerouslySetInnerHTML={{__html: animeInfo.summary}} />
         </div>
         <div className='anime-character'>
           <h2>Characters</h2> 
           <div className='content-list'>
         {animeInfo.character.map (char => 
-          <div>
-            <img src={char.image} alt='inu' />
-           <p>{char.name}</p>
-          </div>
+          <Link to={`${url}/character-profile/${char.id}`}>
+              <div>
+              <img src={char.image} alt='inu' />
+              <p>{char.name}</p>
+            </div>
+          </Link>
+         
         )}
 
       

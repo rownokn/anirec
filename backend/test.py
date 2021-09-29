@@ -1,4 +1,7 @@
-from model import Anime
-from service import AnimeBrowseInfo
+from model import Anime, Character
+from service import AnimeBrowseInfo, AnimeInfo
 
-print(AnimeBrowseInfo.similar_anime_by_user_review(20))
+
+print(AnimeInfo.character_profile(1354))
+
+print(Anime.find_by_id(102437))

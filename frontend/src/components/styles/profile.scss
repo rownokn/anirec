@@ -9,8 +9,46 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     }
 }
 
+.anime-data{
+    a:link {
+        color:#8C325B;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #008AD4;
+        text-decoration: underline;
+    }
+    a:visited{
+        color: #8C325B;
+        text-decoration: none;
+    }
+
+    a:active {
+        color: #008AD4;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    background-color: #ffb3db;
+    margin-left: auto;
+    margin-right: auto;
+    float:center;
+    margin-top: 10px;
+    width:50%;
+    padding: 100px;
+    border: 1px #8C325B solid;
+    .title{
+      color: #8C325B;
+      
+    }
+    @include four-by-2-grid-display;
+}
+
 .user-container {
     .anime-table{
+        img {
+            height: 50%;
+            width: 50%;
+        }
         td, th {
             border: 1px solid #8C325B;
             padding: 8px;
@@ -25,25 +63,16 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             background-color: #8C325B;
             color: #FFF4FB;
           }
+        tr {
+            td {
+                font-size: 2.4ch;
+            }
+        }
           width:100%;
 
     } 
 
-    .anime-data{
-        background-color: #ffb3db;
-        margin-left: auto;
-        margin-right: auto;
-        float:center;
-        margin-top: 10px;
-        width:50%;
-        padding: 100px;
-        border: 1px #8C325B solid;
-        .title{
-          color: #8C325B;
-          
-        }
-        @include four-by-2-grid-display;
-    }
+
     .search-anime {
         background-color: #ffb3db;
         padding: 50px;
@@ -78,6 +107,94 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             font-size: 1.0em;
             font-family: $main-font;
         }
+    }
+
+    .user-reviews{
+        overflow: scroll;
+        height: 785px;
+        display:grid;
+        row-gap: 55px;
+        a:link {
+            color:#FFF4FB;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #008AD4;
+            text-decoration: underline;
+        }
+        a:visited{
+            color: #FFF4FB;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: #008AD4;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        button{
+            float:center;
+            font-family: $main-font;
+            font-size: 1.0em;
+            text-transform: uppercase;
+            width:20%;
+            padding: 20px;
+            background-color: #8C325B;
+            border: 0;
+            color:#FFE4F5;
+        }
+       
+        .user-review-info{
+            display: flex;
+            .tail {
+                p {
+                    text-align: center;
+                    text-transform: uppercase;
+    
+                }
+                margin-top: -4px;
+                padding: 0.5%;
+                background-color: #8C325B;
+                color:#FFE4F5;
+            }
+            
+
+        }
+        .reviews{
+            background-color: #FFE4F5;
+            display:grid;
+            border: #8C325B solid;
+            grid-template-rows: 50px 100px;
+            grid-row-gap: 1px;
+            height: 98.5%;
+            .title{
+                .score{
+                    float: left;
+                }
+                .summary{
+                    float: right;
+                    width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                border-bottom: #8C325B solid;
+                padding: 10px;
+                font-weight: bold;
+            } 
+            .body{
+                line-height: 32px; 
+                padding: 20px;
+                overflow: scroll;
+                height: 250px;
+
+
+            }
+           
+
+        }
+
     }
 
 }
@@ -137,11 +254,57 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     margin-left: 20px;
     padding: 10px;
     border: #8C325B solid;
+   
 }
 
 
 .content {
     .anime-summary{
+            a:link {
+                color:#8C325B;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #008AD4;
+                text-decoration: none;
+            }
+            a:visited{
+                color: #8C325B;
+                text-decoration: none;
+            }
+    
+            a:hover, a:focus {
+                color: #008AD4;
+                text-decoration: none;
+            }
+    
+            a:active {
+                color: #008AD4;
+                background-color: transparent;
+                text-decoration: none;
+            }
+
+        .ch-name {
+            background-color: #8C325B;
+            color: #FFF4FB;
+            display: flex;
+            flex-grow: 4;
+            border: 3px solid #8C325B;
+            p {
+                font-weight: bold;
+                font-size: 5ch;
+                margin-top: 250px;
+                margin-left: 20%;
+            }
+
+        }
+        .character-summary{
+            line-height: 32px; 
+            white-space: pre-line;
+
+
+        }
+      
         background-color: #FFF4FB;
         width: 68.5%;
         height: 100%;
@@ -181,11 +344,57 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         border: #8C325B solid;
         .content-list {
             @include four-by-2-grid-display;
+            a:link {
+                color:#8C325B;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #008AD4;
+                text-decoration: none;
+            }
+            a:visited{
+                color: #8C325B;
+                text-decoration: none;
+            }
+    
+            a:hover, a:focus {
+                color: #008AD4;
+                text-decoration: underline;
+            }
+    
+            a:active {
+                color: #008AD4;
+                background-color: transparent;
+                text-decoration: underline;
+            }
         }
 
     }
 
     .anime-recommendation{
+        a:link {
+            color:#8C325B;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #008AD4;
+            text-decoration: none;
+        }
+        a:visited{
+            color: #8C325B;
+            text-decoration: none;
+        }
+
+        a:hover, a:focus {
+            color: #008AD4;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: #008AD4;
+            background-color: transparent;
+            text-decoration: underline;
+        }
         background-color: #FFF4FB;
         width: 68.5%;
         height: 100%;

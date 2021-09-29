@@ -25,22 +25,19 @@ class UserInfo:
         return Users.token_authenticate(token)
     
     @staticmethod
-    def display_user_activity_by_anime(user_id, anime_id):
-        user_activity = UserAnimeActivity.find_by_animeid_and_userid(user_id, anime_id)
-        activities = []
+    def display_user_activity_by_anime(anime_id, user_id=None):
+        user_activity = UserAnimeActivity.find_by_animeid_and_userid(anime_id, user_id)
 
-        for user in user_activity:
-            user_active_dic = {}
-            user_active_dic['cover_image'] = user[0]
-            user_active_dic['name'] = user[1]
-            user_active_dic['status'] = user[2]
-            user_active_dic['episode_watched'] = user[3]
-            user_active_dic['score'] = user[4]
-            activities.append(user_active_dic)
-        return activities
+        user_active_dic = {}
+        if user_activity:
+            user_active_dic['status'] = user_activity[0]
+            user_active_dic['episode_watched'] = user_activity[1]
+            user_active_dic['score'] = user_activity[2]
+            user_active_dic['id'] = user_activity[3]
+        return user_active_dic
     
     @staticmethod
-    def manage_user_activity(status, episode_watched, score, user_id, anime_id, id=None):
+    def manage_user_activity(status, episode_watched, score, user_id, anime_id, id):
         if id:
             user_anime_activity = UserAnimeActivity(status,episode_watched,score,user_id,anime_id, id)
             user_anime_activity.update() 
@@ -60,6 +57,7 @@ class UserInfo:
             user_active_dic['status'] = user[2]
             user_active_dic['progress'] = user[3]
             user_active_dic['score'] = user[4]
+            user_active_dic['anime_id'] = user[5]
             activities.append(user_active_dic)
         return activities
     
@@ -86,7 +84,7 @@ class UserInfo:
             user_fav = {}
             user_fav['cover_image'] = user[0]
             user_fav['name'] = user[1]
-            user_fav['id'] = user[1]
+            user_fav['id'] = user[2]
             favorites.append(user_fav)
         return favorites
     
@@ -96,15 +94,12 @@ class UserInfo:
         ani_review = Review.find_by_animeid_or_userid(anime_id=None, user_id=user_id)
         for review in ani_review:
             review_dic = {}
-            review_dic['cover_image'] = review[0]
-
-            review_dic['name'] = review[1]
-            review_dic['description'] = review[3]
-            review_dic['sumary'] = review[4]
-            review_dic['rating'] = review[5]
-            review_dic['score'] = review[6]
-            review_dic['anime_id'] = review[7]
-
+            review_dic['name'] = review[0]
+            review_dic['description'] = review[1]
+            review_dic['sumary'] = review[2]
+            review_dic['score'] = review[3]
+            review_dic['anime_id'] = review[4]
+            review_dic['cover_image'] = review[5]
             reviews.append(review_dic)
         return reviews
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import UserNavBar from './UserNavBar'
 import UserProfileDashboard from './UserProfileDashboard'
-import banner_image from '../../images/Beautiful-Anime-Banner-gdragon-sunny-cat-41532037-1500-500.jpeg'
+import banner_image from '../../images/wp5567600-anime-ps4-banner-4k-wallpapers.jpg'
 import cover_image from '../../images/2627af529562d869a6acdea2bf5e83c0.jpeg'
 import {useParams} from 'react-router-dom'
 

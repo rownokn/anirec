@@ -4,7 +4,7 @@ import AnimeList from './AnimeList'
 import UserReview from './UserReview'
 import AnimeFavorites from './AnimeFavorites'
 
-const AnimeProfileDashboard = ({user_id}) => {
+const UserProfileDashboard = ({user_id}) => {
   let { path } = useRouteMatch();
 
   return (
@@ -12,7 +12,7 @@ const AnimeProfileDashboard = ({user_id}) => {
       <Route exact path={`${path}/anime-list`}>
         <AnimeList user_id={user_id} />
       </Route>
-      <Route exact path={`${path}/user_review`}>
+      <Route exact path={`${path}/user-review`}>
         <UserReview user_id={user_id}/>
       </Route>
       <Route exact path={`${path}/anime-favorites`}>
@@ -22,4 +22,4 @@ const AnimeProfileDashboard = ({user_id}) => {
   )
 }
 
-export default AnimeProfileDashboard
+export default UserProfileDashboard

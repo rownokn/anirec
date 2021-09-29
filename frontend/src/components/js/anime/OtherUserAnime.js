@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import {Link, useeMatch} from 'react-router-dom'
+
 
 const OtherUserAnime = ({anime_id}) => {
   const [otherAnime, setOtherAnime] = useState([])
@@ -24,10 +26,13 @@ const OtherUserAnime = ({anime_id}) => {
   return (
     <div className='content-list'>
       {otherAnime.slice(0,4).map(other =>
+       <Link to={`/anime-profile/${other.id}/anime-summary`} >
          <div>
-         <img src={other.image} alt='inu' />
-         <p>{other.title}</p>
-       </div>
+          <img src={other.image} alt='inu' />
+          <p>{other.title}</p>
+         </div>
+       </Link>
+         
         )}
   </div>
   )

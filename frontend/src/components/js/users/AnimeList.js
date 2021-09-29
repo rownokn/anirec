@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react'
 import SearchUserAnime from './SearchUserAnime'
 import { AccountContext } from '../account_management/AccountProvider'
+import {Link} from 'react-router-dom'
+
 
 const AnimeList = () => {
   const {account} = useContext(AccountContext)
@@ -56,7 +58,7 @@ const AnimeList = () => {
           <tbody>
           {userAnimeInfo ? userAnimeInfo.map((user) => 
             <tr>
-              <td><img src={user.cover_image} alt='inu' /></td>
+              <td><Link to={`/anime-profile/${user.anime_id}/anime-summary`}><img src={user.cover_image} alt='inu' /></Link></td>
               <td>{user.name}</td>
               <td>{user.progress}</td>
               <td>{user.score}%</td>

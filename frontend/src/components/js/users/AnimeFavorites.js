@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
-import SearchUserAnime from './SearchUserAnime'
 import { AccountContext } from '../account_management/AccountProvider'
-
+import {Link} from 'react-router-dom'
 
 
 const AnimeFavorites = () => {
@@ -42,10 +41,15 @@ const AnimeFavorites = () => {
     <div>
       <div className='anime-data'>
           {userAnimeInfo ? userAnimeInfo.map((user) => 
-              <div>
+          
+            <div>
+              <Link to={`/anime-profile/${user.id}/anime-summary`}>
                  <img src={user.cover_image} alt='inu' />
                 <p className='title'>{user.name}</p>
+                </Link>
               </div>
+          
+              
           ): ""}
         </div>
     </div>

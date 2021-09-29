@@ -1,0 +1,50 @@
+$main-font: 'Comfortaa', 'Helvetica', 'serif';
+
+.trending_anime, .popular_anime  {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    overflow-wrap: break-word;
+    img {
+        max-width: 150px;
+        max-height: 225px;
+    }
+}
+
+.anime-display {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    a:link {
+        color:#8C325B;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #008AD4;
+        text-decoration: none;
+    }
+
+    
+}
+
+.popular, .trend{
+    .more {
+        float:right;
+    }
+    padding: 50px;
+    margin-left: 2%;
+    margin-top: 1%;
+    border: #8C325B solid;
+    width:90%;
+    background-color: #fff4fb;
+
+
+    p {
+        color: #8C325B;
+    }
+    .header {
+        font-family: $main-font;
+        font-weight: bold;
+        font-size: larger;
+    }
+}
+

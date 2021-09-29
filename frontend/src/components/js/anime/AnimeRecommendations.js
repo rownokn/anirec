@@ -1,5 +1,4 @@
 import React from 'react'
-import OtherUserAnime from './OtherUserAnime'
 import UserAnimeDisplay from './UserAnimeDisplay'
 
 const AnimeRecommendations = ({anime_id}) => {
