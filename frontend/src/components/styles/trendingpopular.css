@@ -1,0 +1,68 @@
+.trending_anime, .popular_anime {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  overflow-wrap: break-word;
+}
+
+.trending_anime img, .popular_anime img {
+  max-width: 150px;
+  max-height: 225px;
+}
+
+.anime-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 50px;
+}
+
+.anime-display a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-display a:hover {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.anime-display a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-display a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.popular, .trend {
+  padding: 50px;
+  margin-left: 2%;
+  margin-top: 1%;
+  border: #8C325B solid;
+  width: 90%;
+  background-color: #fff4fb;
+}
+
+.popular .more, .trend .more {
+  float: right;
+}
+
+.popular p, .trend p {
+  color: #8C325B;
+}
+
+.popular .header, .trend .header {
+  font-family: "Comfortaa", "Helvetica", "serif";
+  font-weight: bold;
+  font-size: larger;
+}
+/*# sourceMappingURL=trendingpopular.css.map */

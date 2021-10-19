@@ -1,20 +1,17 @@
 import React, {useState} from 'react'
 import Modal from "../Modal";
+import { toast } from "react-toastify";
+import validator from 'validator'
 
 
 
-
-const AnimeActivty = ({anime_id, animeInfo, userActivity, account}) => {
+const AnimeActivty = ({anime_id, animeInfo, userActivity, setUserActivity, account, activtiesExist, setActivitiesExist}) => {
   const [show, setShow] = useState(false)
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState(userActivity.status)
   const [episodesWatched, setEpisodesWatched] = useState(userActivity.episode_watched)
   const [score, setScore] = useState(userActivity.score)
 
-  const isEmpty = (obj) => {
-    return Object.keys(obj).length === 0;
-  }
+
 
   const statusHandler = e => {
     setStatus(e.target.value)
@@ -34,7 +31,6 @@ const AnimeActivty = ({anime_id, animeInfo, userActivity, account}) => {
       const config = {
         method: 'POST',
         body: JSON.stringify({
-          "id": userActivity.id,
           "status": status ? status : userActivity.status,
           "episode_watched": episodesWatched ? episodesWatched : userActivity.episode_watched,
           "score" : score ? score : userActivity.score,
@@ -46,16 +42,52 @@ const AnimeActivty = ({anime_id, animeInfo, userActivity, account}) => {
           Authorization: `Bearer ${account.session_id}`
         }
       }
-      const response = await fetch('http://localhost:5000/user/manage_activity', config);
-      const userInfo = await response.json();
+
+      if (validator.isEmpty(status)){
+        toast.error("Please Enter Rating", {
+          position: toast.POSITION.TOP_CENTER,
+          className: 'toast'
+        });
+      }else if (validator.isEmpty(score.toString())){
+        toast.error("Please Enter Score", {
+          position: toast.POSITION.TOP_CENTER,
+          className: 'toast'
+        });
+      }else if (validator.isEmpty(episodesWatched.toString())){
+        toast.error("Please Enter Episode Watched", {
+          position: toast.POSITION.TOP_CENTER,
+          className: 'toast'
+        });
+      }else{
+        if (parseInt(score) < 0 || parseInt(score)  > 100){
+          toast.error("invalid score: please choose between 0 and 100", {
+            position: toast.POSITION.TOP_CENTER,
+            className: 'toast'
+          });
+        }else if (parseInt(episodesWatched) < 0 || parseInt(episodesWatched)  > parseInt(animeInfo.episodes)){
+          toast.error(`please choose between 0 and ${animeInfo.episodes}`, {
+            position: toast.POSITION.TOP_CENTER,
+            className: 'toast'
+          });
+        }else{
+          const response = await fetch('http://localhost:5000/user/manage_activity', config);
+          const userInfo = await response.json();
+          toast.success(userInfo.msg, {
+            position: toast.POSITION.TOP_CENTER,
+            className: 'toast'
+          });
+          setActivitiesExist(true)
+          setUserActivity(userInfo.activities)
+
+
+        }
+      }
 
     }catch(e) {
-      console.log(e)
+      console.error(e)
     }
 
   }
-
-  console.log(userActivity)
 
   const deleteActivity = async () => {
     const config = {
@@ -64,22 +96,24 @@ const AnimeActivty = ({anime_id, animeInfo, userActivity, account}) => {
         Authorization: `Bearer ${account.session_id}`
       }
     }
-    const response = await fetch(`http://localhost:5000/user/delete_activity/${account.account_id}/${anime_id}/${userActivity.id}`, config);
+    const response = await fetch(`http://localhost:5000/user/delete_activity/${account.account_id}/${anime_id}`, config);
     const userInfo = await response.json();
-
+    toast.success(userInfo.msg, {
+      position: toast.POSITION.TOP_CENTER,
+      className: 'toast'
+    });
+    setUserActivity({})
+    setActivitiesExist(false)
+    
   }
-
-  
-
   return (
     <div>
-      {account.account_id ? (isEmpty(userActivity) ? <button onClick={() => setShow(true)}>Add Activity</button>: <button onClick={() => setShow(true)}>{userActivity.status}</button> ) : <button>Please Login to see activity</button>}
+      {account.account_id ? (Object.keys(userActivity).length === 0 ? <button  className='profile-button activity-button' onClick={() => setShow(true)}>Add Activity</button>: <button className='profile-button activity-button' onClick={() => setShow(true)}>{status}</button> ) : <button className='profile-button activity-button'>Please Login to see activity</button>}
       <Modal title={animeInfo.name} onClose={() => setShow(false)} show={show}>
         <div class='manage'>
           <div class='user-activity'>
             <img src={animeInfo.cover_image} alt='cover_photo'/>
-            <button>Add To Favorites</button>
-            <button onClick={deleteActivity}>Delete This Activity</button>
+             {activtiesExist ? <button className='activity-button' onClick={deleteActivity}>Delete This Activity</button> : <button className='activity-button' onClick={deleteActivity} disabled>Delete This Activity</button> }
           </div>
           <div class='content'>
             <p>ACTIVITY</p>
@@ -96,7 +130,7 @@ const AnimeActivty = ({anime_id, animeInfo, userActivity, account}) => {
             </select>
             <input type='number' placeholder='Episode Watched' value={episodesWatched} onChange={episodesWatchedHandler}/>
             <input type='number' placeholder='Score' value={score} onChange={scoreHandler}/>
-            <button onClick={manageActivity}>Submit</button>
+            <button className='activity-button' onClick={manageActivity}>Submit</button>
           </div>
         </div>
    

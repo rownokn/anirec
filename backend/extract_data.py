@@ -1,6 +1,6 @@
 from util import UserData, AnimeData, CharacterData
 
-#AnimeData.insert_into_database()
+AnimeData.insert_into_database()
 #insert_anime_character()
 #import_tag_data()
 #AnimeData.anime_episodes()
@@ -15,4 +15,4 @@ from util import UserData, AnimeData, CharacterData
 #import_users()
 #CharacterData.insert_into_ch_database()
 #CharacterData.insert_anime_character()
-CharacterData.insert_staff_data()
+#CharacterData.insert_staff_data()

@@ -60,21 +60,48 @@ class UserAnimeActivity(ORM):
             sql = f"""INSERT INTO {self.tablename}(
                  id, status, episode_watched, score, user_id, anime_id) 
                  VALUES (nextval('user_act_seq'), %s, %s, %s, %s, %s)"""
-            values = [self.status, self.episode_watched, self.score, self.user_id, self.anime_id]
+            values = [self.status, self.episode_watched, self.score, self.user_id, self.anime_id]            
             cursor.execute(sql,values)
     
+    def delete_by_animeid_userid(self):
+        with self.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"delete from {self.tablename} where anime_id=%s and user_id=%s"
+            values = [self.anime_id, self.user_id]
+            cursor.execute(sql, values)
+    
+    def update_by_animeid_userid(self):
+        with self.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f'''
+                    update {self.tablename} set status=%s, 
+                    episode_watched=%s, score=%s, 
+                    id=%s where anime_id=%s and user_id=%s
+                   '''
+            values = [self.status, self.episode_watched, self.score, self.id, self.anime_id, self.user_id]
+            print(sql)
+            print(values)
+            cursor.execute(sql, values)
+    
     @classmethod
-    def get_by_userid(cls, user_id):
+    def get_by_userid(cls, user_id, name):
         with cls.db_conn as conn:
             cur = conn.cursor()
             sql = f'''
                       select a.cover_image, a.name, ua.status,  
                       ua.episode_watched || '/' || a.episodes as progress,  
-                      ua.score, ua.anime_id from {cls.tablename} ua 
+                      ua.score, ua.anime_id, a.english_name from {cls.tablename} ua 
                       join anime a on ua.anime_id=a.id 
-                      where  ua.user_id=%s;
+                      where  ua.user_id=%s
                    '''
-            cur.execute(sql, [user_id])
+            values = [user_id]
+
+            if name:
+                sql += ' and (a.name ilike %s or a.english_name ilike %s)'
+                values.append('%' + name + '%')
+                values.append('%' + name + '%')
+
+            cur.execute(sql, values)
             return cur.fetchall()
             
     
@@ -103,12 +130,31 @@ class UserFavoriteAnime(ORM):
         self.anime_id = anime_id
         self.id = id
     
+    def delete_by_animeid_userid(self):
+        with self.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"delete from {self.tablename} where anime_id=%s and user_id=%s"
+            values = [self.anime_id, self.user_id]
+            cursor.execute(sql, values)
+
+    @classmethod
+    def get_by_animeid_userid(cls, anime_id, user_id):
+        with cls.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"select  * from {cls.tablename} where anime_id=%s"
+            values = [anime_id]
+            if user_id != 'undefined':
+                 sql += ' and user_id=%s'
+                 values.append(user_id)
+            cursor.execute(sql, values)
+            return cursor.fetchone()
+
     @classmethod
     def get_by_userid(cls, user_id):
         with cls.db_conn as conn:
             cursor = conn.cursor()
             sql = f"""
-                select  a.cover_image, a.name, a.id from anime a 
+                select  a.cover_image, a.name, a.id,  a.english_name from anime a 
                 join {cls.tablename} af 
                 on a.id=af.anime_id 
                 where af.user_id=%s;

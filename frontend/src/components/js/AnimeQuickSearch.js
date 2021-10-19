@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import Modal from "./Modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import {Link} from 'react-router-dom'
+import Loading from './Loading'
+import AnimeData from './AnimeData';
 
 const AnimeQuickSearch = ({setShow, show}) => {
   const [animeList, setAnimeList] = useState([])
@@ -20,11 +21,14 @@ const AnimeQuickSearch = ({setShow, show}) => {
     try {
       const response = await fetch(`http://localhost:5000/anime/quick_search/${animeName}`);
       const info = await response.json()
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 1000);
       setAnimeList(info.anime)
 
     }catch (err){
-      setIsError(true)
-    }
+      console.error(err)
+ }
 
   }
   
@@ -33,22 +37,14 @@ const AnimeQuickSearch = ({setShow, show}) => {
     <div class='quick-search-bar'>    
       <input type='text' placeholder='Search' onChange={animeNameHandler} /><button onClick={anime}><i><FontAwesomeIcon icon={faSearch} /></i></button>
     </div>
-    <div className='anime-data anime-quick-search-data'>
 
-          {animeList ? animeList.map((anime) => 
-                
-                 <Link to={`/anime-profile/${anime.id}/anime-summary`} onClick={() => setShow(false)}>
-                   <div>
-                    <img src={anime.cover_image} alt='inu' />
-                    <p className='title'>{anime.name} </p>
-                   </div>
-                  </Link>
-               
-             ) : ""}
+    {!isLoading ? (animeList ? <AnimeData animeData={animeList} style={'anime-data anime-quick-search-data'} setShow={() => setShow(false)} />: ""): <Loading/>}
           
        
-     </div>
+    
     </Modal>
+
+    
   )
 }
 

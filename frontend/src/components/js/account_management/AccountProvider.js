@@ -1,19 +1,15 @@
 import React, {createContext, useState} from 'react'
 import {useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+
 
 const AccountContext = createContext({
 
 });
 
-const useStateWithSessionStorage = (key, initialValue) => {
-  const [value, setValue] = useState(
-    sessionStorage.getItem(key) || initialValue
-  );
-  return [value, setValue]
-}
 
 const AccountProvider = ({children}) => {
-  const [account, setAccount] = useStateWithSessionStorage("account", {})
+  const [account, setAccount] = useState({})
   const [auth, setAuth] = useState(false)
   let history = useHistory();
 
@@ -40,17 +36,14 @@ const AccountProvider = ({children}) => {
           'username' : userData.username,
           'auth' : userData.auth,
       })
-      sessionStorage.setItem("account", JSON.stringify({
-        'account_id' : userData.user_id,
-        'session_id' : userData.session_id,
-        'username' : userData.username,
-        'auth' : userData.auth,
-    }));
 
       console.log(account)
       history.push("/user-profile/anime-list"); 
     }else{
-      console.log("Invalid Login")
+      toast.error(userData.msg, {
+        position: toast.POSITION.TOP_CENTER,
+        className: 'toast'
+      });
     }
 
     }
@@ -63,11 +56,10 @@ const AccountProvider = ({children}) => {
     setAuth(false)
     history.push("/login");
     setAccount({})
-
   }
 
   return (
-    <AccountContext.Provider value={{account, auth, authenticate, logout}}>
+    <AccountContext.Provider value={{account, auth, authenticate, logout, ToastContainer}}>
       {children}
     </AccountContext.Provider>
     

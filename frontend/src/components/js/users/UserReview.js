@@ -1,11 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { AccountContext } from '../account_management/AccountProvider'
-import {Link} from 'react-router-dom'
+import {Link, useRouteMatch} from 'react-router-dom'
 
 
 const UserReview = ({user_id}) => {
   const {account} = useContext(AccountContext)
   const [userReview, setUserReview] = useState([])
+  const { url } = useRouteMatch();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -28,8 +29,8 @@ const UserReview = ({user_id}) => {
       setUserReview(info.users)
 
     }catch (err){
-      setIsError(true)
-    }
+      console.error(err)
+ }
   }
 
   useEffect(() => {
@@ -38,27 +39,32 @@ const UserReview = ({user_id}) => {
 
   console.log(userReview)
   return (
-    <div className='anime-summary user-reviews'>
+    <div className='user-reviews'>
 
       <h2>User Reviews</h2>
-      <button>Add Review </button>
-      {userReview.map((rev) => 
+      <Link to={`${url}/add-user-review`}><button>Add Review </button></Link>
+      {userReview ? userReview.map((rev) => 
         <div className='user-review-info'>
           <div className='anime-review-title'>
           <Link to={`/anime-profile/${rev.anime_id}/anime-summary`}>
             <img src={rev.cover_image} alt='rev_image' />
-           <div className='tail'><p>{rev.name}</p></div></Link>
+           <div className='tail'><p>{rev.eng_title ? (rev.eng_title !== rev.name ? rev.eng_title + ' (' + rev.name + ')' : rev.name) :  rev.name}</p></div></Link>
           </div>
           <div className='reviews'>
             <div className='title'>
               <span className='score'>Score: {rev.score}% </span>
-              <span className='summary'><p dangerouslySetInnerHTML={{__html: rev.sumary}} /></span>
+              <span className='summary'>
+                <p dangerouslySetInnerHTML={{__html: rev.sumary}} />
+                </span>
             </div>
-            <div className='body'>{rev.description}</div>
+            <div className='body'>
+              <h2 className='title'>{rev.eng_title ? (rev.eng_title !== rev.name ? rev.eng_title + ' (' + rev.name + ')' : rev.name) :  rev.name}</h2>
+              <p dangerouslySetInnerHTML={{__html: rev.description}} />
+              </div>
             
           </div>
         </div>
-      )}
+      ): "No Reviews"}
 
     </div>
     

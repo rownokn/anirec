@@ -21,6 +21,8 @@ class AnimeInfo:
         anime_result['cover_image'] = anime_data[10]
         anime_result['banner_image'] = anime_data[11]
         anime_result['summary'] = anime_data[12]
+        anime_result['eng_title'] = anime_data[13]
+
         anime_result['genre'] = AnimeInfo.anime_genre(anime_id)
         anime_result['studio'] = AnimeInfo.anime_studios(anime_id)
         anime_result['character'] = AnimeInfo.anime_characters(anime_id)[:8]
@@ -115,8 +117,9 @@ class AnimeInfo:
         for ani in animes_by_anime:
             ani_dic = {}
             ani_dic['id'] = ani[0]
-            ani_dic['name'] = ani[1]
+            ani_dic['title'] = ani[1]
             ani_dic['image'] = ani[2]
+            ani_dic['eng_title'] = ani[3]
             anime_data.append(ani_dic)
         return anime_data
     
@@ -127,8 +130,9 @@ class AnimeInfo:
         for ani in animes_by_anime:
             ani_dic = {}
             ani_dic['id'] = ani[0]
-            ani_dic['name'] = ani[1]
+            ani_dic['title'] = ani[1]
             ani_dic['image'] = ani[2]
+            ani_dic['eng_title'] = ani[3]
             anime_data.append(ani_dic)
         return anime_data
     
@@ -143,21 +147,84 @@ class AnimeInfo:
            rec_dic['id'] = rec['mediaRecommendation']['id']
            rec_dic['title'] = rec['mediaRecommendation']['title']['userPreferred']
            rec_dic['image'] = rec['mediaRecommendation']['coverImage']['large']
+           rec_dic['eng_title'] = rec['mediaRecommendation']['title']['english']
+
            rec_data.append(rec_dic)
         
         return rec_data
     
+    @staticmethod
     def quick_search(anime_name):
         anime_lists = []
         anime_data = Anime.get_anime_by_name(anime_name)
         for anime in anime_data:
             anime_dic = {}
             anime_dic['id'] = anime[0]
-            anime_dic['name'] = anime[1]
-            anime_dic['cover_image'] = anime[2]
+            anime_dic['title'] = anime[1]
+            anime_dic['image'] = anime[2]
+            anime_dic['eng_title'] = anime[3]
+
             anime_lists.append(anime_dic)
         
         return anime_lists
+    
+    @staticmethod
+    def category_link(name):
+        anime_lists = []
+        anime_data = Anime.get_anime_by_category(name)
+        for anime in anime_data:
+            anime_dic = {}
+            anime_dic['id'] = anime[0]
+            anime_dic['title'] = anime[1]
+            anime_dic['image'] = anime[2]
+            anime_dic['eng_title'] = anime[3]
+            anime_lists.append(anime_dic)
+        
+        return anime_lists
+    
+    @staticmethod
+    def studio_link(name):
+        anime_lists = []
+        anime_data = Anime.get_anime_by_studio(name)
+        for anime in anime_data:
+            anime_dic = {}
+            anime_dic['id'] = anime[0]
+            anime_dic['title'] = anime[1]
+            anime_dic['image'] = anime[2]
+            anime_dic['eng_title'] = anime[3]
+            anime_lists.append(anime_dic)
+        
+        return anime_lists
+    
+    @staticmethod
+    def advanced_search(name, genre, tag, year, season, format, status, start_date, end_date):
+        anime_lists = []
+        anime_data = Anime.detailed_anime(name, genre, tag, year, season, format, status, start_date, end_date)
+        for anime in anime_data:
+            anime_dic = {}
+            anime_dic['id'] = anime[0]
+            anime_dic['title'] = anime[1]
+            anime_dic['image'] = anime[2]
+            anime_dic['eng_title'] = anime[3]
+            anime_lists.append(anime_dic)
+        return anime_lists
+    
+    @staticmethod
+    def dropdown_data():
+        dropdown_lists = {}
+        formats = [i[0] for i in Anime.get_anime_format()]
+        status = [i[0]  for i in Anime.get_anime_status()]
+        studios = [i[0]  for i in AnimeStudio.get_all_studios()]
+        genres = [i[0]  for i in AnimeGenre.get_all_genres()]
+        tags = [i[0]  for i in Tag.select_tag_name()]
+
+        dropdown_lists['format'] = formats
+        dropdown_lists['status'] = status
+        dropdown_lists['studio'] = studios
+        dropdown_lists['genre'] = genres
+        dropdown_lists['tag'] = tags
+       
+        return dropdown_lists
         
            
 
@@ -166,3 +233,10 @@ class AnimeNotFoundError(Exception):
 
 class CharacterNotFoundError(Exception):
     pass
+
+class CategoryNotFoundError(Exception):
+    pass
+
+class StudioNotFoundError(Exception):
+    pass
+

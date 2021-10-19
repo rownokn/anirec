@@ -2,10 +2,7 @@ import React from 'react'
 import UserNavBar from './UserNavBar'
 import UserProfileDashboard from './UserProfileDashboard'
 import banner_image from '../../images/wp5567600-anime-ps4-banner-4k-wallpapers.jpg'
-import cover_image from '../../images/2627af529562d869a6acdea2bf5e83c0.jpeg'
 import {useParams} from 'react-router-dom'
-
-
 
 const UserProfile = () => {
   const {user_id} = useParams()
@@ -15,15 +12,11 @@ const UserProfile = () => {
   return (
     <div className='user-container'>
       <div className='image-container'>
-        <img src={banner_image} alt='banner' height='400'/>
+        <img src={banner_image} alt='banner' />
       </div>
       <UserNavBar/>
    
-      <div className='profile-image user-profile'>
-        <img src={cover_image} alt='cover_image'/>
-      </div>
-
-      <div className='content'>
+      <div className='content user-content'>
         <UserProfileDashboard user_id={user_id} />
       </div>
    </div>

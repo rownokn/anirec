@@ -29,6 +29,7 @@ class AnimeTag(AnimeUitl, ORM):
     def __init__(self, tag_id, anime_id):
         self.tag_id = tag_id
         self.anime_id = anime_id
+    
 
 class AnimeGenre(AnimeUitl, ORM):
     tablename = 'anime_genre'
@@ -38,6 +39,15 @@ class AnimeGenre(AnimeUitl, ORM):
         self.name = name
         self.anime_id = anime_id
         self.id = id
+
+    @classmethod
+    def get_all_genres(cls):
+         with cls.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"select distinct(name) from anime_genre"
+            cursor.execute(sql)
+            return cursor.fetchall()
+    
 class AnimeStudio(AnimeUitl, ORM):
     tablename= 'anime_studio'
     columns = ['anime_id', 'studio_name']
@@ -46,6 +56,14 @@ class AnimeStudio(AnimeUitl, ORM):
         self.anime_id = anime_id
         self.studio_name = studio_name
         self.id = id
+    
+    @classmethod
+    def get_all_studios(cls):
+         with cls.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"select distinct(studio_name) from anime_studio"
+            cursor.execute(sql)
+            return cursor.fetchall()
     
 class AnimeCharacter(AnimeUitl, ORM):
     tablename = 'anime_character'

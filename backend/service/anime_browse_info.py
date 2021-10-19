@@ -11,6 +11,7 @@ class AnimeBrowseInfo:
             pop_dic = {}
             pop_dic['id'] = pop['id']
             pop_dic['title'] = pop['title']['userPreferred']
+            pop_dic['eng_title'] = pop['title']['english']
             pop_dic['image'] = pop['coverImage']['large']
             pop_dic['score'] = pop['averageScore']
             pop_dic['popularity'] = pop['popularity']
@@ -27,6 +28,7 @@ class AnimeBrowseInfo:
             trend_dic = {}
             trend_dic['id'] = trend['id']
             trend_dic['title'] = trend['title']['userPreferred']
+            trend_dic['eng_title'] = trend['title']['english']
             trend_dic['image'] = trend['coverImage']['large']
             trend_dic['score'] = trend['averageScore']
             trend_dic['trending'] = trend['trending']
@@ -41,8 +43,10 @@ class AnimeBrowseInfo:
         anime_activites_by_user = Anime.get_similar_anime_by_similar_users(user_id)
         for ani in anime_activites_by_user:
             ani_dic = {}
-            ani_dic['name'] = ani[0]
-            ani_dic['image'] = ani[1]
+            ani_dic['id'] = ani[0]
+            ani_dic['title'] = ani[1]
+            ani_dic['image'] = ani[2]
+            ani_dic['eng_title'] = ani[3]
             anime_data.append(ani_dic)
         return anime_data
        

@@ -17,7 +17,8 @@ class AnimeInfoUtil:
                         mediaRecommendation{
                         id,
                         title {
-                            userPreferred
+                            userPreferred,
+                            english
                         }, 
                         coverImage {
                             medium,
@@ -48,7 +49,8 @@ class AnimeInfoUtil:
                     media (type:ANIME, sort: [ POPULARITY_DESC, SCORE_DESC]) {
                         id,
                         title {
-                            userPreferred
+                            userPreferred,
+                            english
                         },
                         coverImage {
                             medium,
@@ -77,7 +79,8 @@ class AnimeInfoUtil:
                     media (type:ANIME, sort: [ TRENDING_DESC]) {
                         id,
                         title {
-                            userPreferred
+                            userPreferred,
+                            english
                         }, 
                         coverImage {
                             medium,

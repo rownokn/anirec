@@ -6,7 +6,7 @@ import transparent_logo from '../../images/brandmark-design-transparent.png'
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const {authenticate} = useContext(AccountContext)
+  const {authenticate, ToastContainer} = useContext(AccountContext)
 
   const usernameHandler = e => {
     setUsername(e.target.value)
@@ -24,8 +24,8 @@ const Login = () => {
        <div className='account-input'>
           <input type='text' placeholder='Username' onChange={usernameHandler}/>
           <input type='password' placeholder='Password' onChange={passwordHandler}/>
-          <button onClick={() => authenticate(username, password)}>submit</button>
-
+          <button class='login-submit' onClick={() => authenticate(username, password)}>submit</button>
+          <ToastContainer />
        </div>
        
     </div>

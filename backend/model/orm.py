@@ -24,6 +24,8 @@ class ORM:
             where_clause = f'{self.primary_key}={self.__dict__.get(self.primary_key)}'
             sql = f'UPDATE {self.tablename} SET {data_update} where {where_clause} '
             values = [v for v in self.__dict__.values()]
+            print(sql)
+            print(values)
             cursor.execute(sql,values)
     
     def delete(self):
@@ -50,6 +52,7 @@ class ORM:
             sql = f"""SELECT * FROM {cls.tablename}"""
             cursor.execute(sql)
             return cursor.fetchall()
+    
 
 
 

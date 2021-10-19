@@ -1,4 +1,4 @@
-from service import AnimeInfo, AnimeBrowseInfo, AnimeNotFoundError,CharacterNotFoundError, UserInfo
+from service import AnimeInfo, AnimeBrowseInfo, AnimeNotFoundError,CharacterNotFoundError, UserInfo, CategoryNotFoundError, StudioNotFoundError
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -11,11 +11,22 @@ CORS(app)
 
 @app.route('/profile/<anime_id>/<user_id>', methods=['GET'])
 def anime_profile(anime_id, user_id):
+    activites_exist = False
+    favorite_exist = False
     try:
         anime_data = AnimeInfo.anime_profile(anime_id)
         activities = UserInfo.display_user_activity_by_anime(anime_id, user_id)
-
-        return jsonify({"anime": anime_data, "activities": activities})
+        rec_data = AnimeInfo.anime_recommedation_based_on_anime(anime_id)
+        fav_data =  UserInfo.favorite_exist(user_id, anime_id)
+        if activities:
+            activites_exist = True
+        if fav_data:
+            favorite_exist = True
+        return jsonify({"anime": anime_data, 
+                        "activities": activities, 
+                        "recommendation": rec_data,
+                        "activity_exist": activites_exist,
+                        "favorite_exist": favorite_exist})
     except AnimeNotFoundError:
         return jsonify({"error": "Anime Not Found"}), 404
 
@@ -59,13 +70,6 @@ def character_data(id):
     except CharacterNotFoundError:
         return jsonify({"error": "Character Not Found"}), 404
 
-@app.route('/recommendation_within_api/<id>', methods=['GET'])
-def anime_recommendation_data(id):
-    try:
-        rec_data = AnimeInfo.anime_recommedation_based_on_anime(id)
-        return jsonify({"recommendation": rec_data})
-    except AnimeNotFoundError:
-        return jsonify({"error": "Anime Not Found"}), 404
 
 @app.route('/populartrend', methods=['GET'])
 def anime_popular():
@@ -88,7 +92,7 @@ def anime_quick_search(name):
     search_anime = AnimeInfo.quick_search(name)
     return jsonify({"anime": search_anime})
   
-"""
+
 @app.route('/rec_by_user/<id>', methods=['GET'])
 def similar_anime_rec_by_user(id):
     try:
@@ -97,6 +101,49 @@ def similar_anime_rec_by_user(id):
     except AnimeNotFoundError:
         return jsonify({"error": "Anime Not Found"}), 404
 
-"""
+@app.route('/anime_by_category/<name>', methods=['GET'])
+def anime_by_category(name):
+    try:
+        anime = AnimeInfo.category_link(name)
+        return jsonify(anime)
+    except CategoryNotFoundError:
+        return jsonify({"error": "Category Not Found"}), 404
+
+@app.route('/anime_by_studio/<name>', methods=['GET'])
+def anime_by_studio(name):
+    try:
+        anime = AnimeInfo.studio_link(name)
+        return jsonify(anime)
+    except StudioNotFoundError:
+        return jsonify({"error": "Studio Not Found"}), 404
+
+@app.route('/advanced_anime_search', methods=['POST'])
+def advanced_search():
+    try:
+        data = request.get_json()
+        name = data.get('name')
+        genre = data.get('genre')
+        tag = data.get('tag')
+        year = data.get('year')
+        season = data.get('season')
+        season = data.get('season')
+
+        format = data.get('format')
+        status = data.get('status')
+        start_date = data.get('start_date')
+        end_date = data.get('end_date')
+        anime = AnimeInfo.advanced_search(name, genre, tag, year, season, format, status, start_date, end_date)
+        dropdown = AnimeInfo.dropdown_data()
+        return jsonify({'anime': anime, 'dropdown': dropdown})
+    except AnimeNotFoundError:
+        return jsonify({"error": "Anime Not Found"}), 404
+    except StudioNotFoundError:
+        return jsonify({"error": "Studio Not Found"}), 404
+    except CategoryNotFoundError:
+        return jsonify({"error": "Category Not Found"}), 404
+
+
+
+
 
 

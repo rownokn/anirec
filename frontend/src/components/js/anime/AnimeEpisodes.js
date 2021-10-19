@@ -1,43 +1,38 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import {useQuery} from 'react-query'
+import Loading from '../Loading'
+import loading_gif from '../../images/13335.gif'
+
+const fetchAnimeEpisodes = async (anime_id) => {
+  const response = await fetch(`http://localhost:5000/anime/episodes/${anime_id}`);
+  return await response.json()
+} 
 
 const AnimeEpisodes = ({anime_id}) => {
-  const [animeEpisodes, setAnimeEpisodes] = useState([])
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const {isLoading, data} = useQuery([anime_id], async () =>{
+    const data = await fetchAnimeEpisodes(anime_id)
+    return data
+  })
 
-  const episodes = async () => {
-    setIsError(false);
-    setIsLoading(true);
-    try {
-      const response = await fetch(`http://localhost:5000/anime/episodes/${anime_id}`);
-      const info = await response.json()
-      console.log(info)
-      setAnimeEpisodes(info.anime_episodes)
-
-    }catch (err){
-      setIsError(true)
-    }
+  if (isLoading){
+    return <Loading />
   }
-
-  useEffect(() => {
-    episodes()
-  }, [])
-
-  console.log(animeEpisodes)
 
 
   return (
     <div className='anime-summary'>
       <h2>Anime Episodes</h2>
-      <ul>
-        {animeEpisodes ? animeEpisodes.map((epi) => 
+      {data.anime_episodes ? <ul>
+        {data.anime_episodes.length ? data.anime_episodes.map((epi) => 
           <li>
-            {epi.name}
+              <a href={`${epi.url}`}>{epi.name}</a>
           </li>
-        ): "Episodes Not Available Please check other sites for the episodes of this anime"}
-      </ul>
+        ): <div><img src={loading_gif} alt='loading' /> <h3>Episodes Not Available Please check other sites for the episodes of this anime</h3></div>}
+        </ul> :
+       <div><img src={loading_gif} alt='loading' /> <h3>Episodes Not Available Please check other sites for the episodes of this anime</h3></div> }
       Episodes can be watched on <b>Crunchyroll</b>
     </div>
+    
   )
 }
 

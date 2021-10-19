@@ -2,24 +2,44 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
 @mixin four-by-2-grid-display {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    overflow-wrap: break-word;
     img {
         max-width: 150px;
         max-height: 225px;
     }
+    p {
+        word-wrap: break-word;
+        word-break: break-all;
+        max-width: 150px;
+        line-break: strict;
+    }
 }
 
-.anime-data{
+.user-content{
+    margin-top: 2%;
+}
+
+
+.anime-data {
+    @include four-by-2-grid-display ;
+    background-color: #FFF4FB;    
+    border: 3px solid #8C325B;        
+    padding: 100px;
+    margin-top:10px;
     a:link {
         color:#8C325B;
         text-decoration: none;
     }
     a:hover {
         color: #008AD4;
-        text-decoration: underline;
+        text-decoration: none;
     }
     a:visited{
         color: #8C325B;
+        text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        color: #008AD4;
         text-decoration: none;
     }
 
@@ -28,6 +48,240 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         background-color: transparent;
         text-decoration: none;
     }
+}
+
+.anime-container {
+    .profile-image {
+        img {
+            margin-top: -15%;
+            margin-left: 20px;
+            width: 20%;
+        }
+}
+
+}
+
+.contents {
+    display:flex;
+    .profile-content {
+        width: 30%;
+        .activity {
+            .activity-button{
+                width: 20vw;
+            }
+            
+        }
+        .anime-info {
+            width: 20vw;
+        }
+    }
+
+    .content {
+        width: 70%;
+        margin-left: -60px;
+        
+        .summary {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+
+        }
+        .anime-summary{
+                a:link {
+                    color:#8C325B;
+                    text-decoration: none;
+                }
+                a:hover {
+                    color: #008AD4;
+                    text-decoration: none;
+                }
+                a:visited{
+                    color: #8C325B;
+                    text-decoration: none;
+                }
+        
+                a:hover, a:focus {
+                    color: #008AD4;
+                    text-decoration: none;
+                }
+        
+                a:active {
+                    color: #008AD4;
+                    text-decoration: none;
+                }
+    
+            .ch-name {
+                background-color: #8C325B;
+                color: #FFF4FB;
+                display: flex;
+                flex-grow: 4;
+                border: 3px solid #8C325B;
+               
+                p {
+                    font-weight: bold;
+                    font-size: 5ch;
+                    margin-top: 250px;
+                    margin-left: 20%;
+                }
+    
+            }
+            .character-summary{
+                line-height: 32px; 
+                white-space: pre-line;
+    
+    
+            }
+          
+            background-color: #FFF4FB;
+            color: #8C325B;
+            padding:40px;
+            border: #8C325B solid;
+            .content-list {
+                @include four-by-2-grid-display;
+            }
+    
+            ul {
+                list-style-type: none;
+                li{
+                    margin-top:1em;
+                    margin-left:-2em;
+                }
+    
+            }
+            
+        
+        }
+   
+    .anime-character{
+        background-color: #FFF4FB;
+
+        float:center;
+
+        color: #8C325B;
+        padding:40px;
+        border: #8C325B solid;
+        .content-list {
+            @include four-by-2-grid-display;
+            a:link {
+                color:#8C325B;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #008AD4;
+                text-decoration: none;
+            }
+            a:visited{
+                color: #8C325B;
+                text-decoration: none;
+            }
+    
+            a:hover, a:focus {
+                color: #008AD4;
+                text-decoration: none;
+            }
+    
+            a:active {
+                color: #008AD4;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    .anime-recommendation{
+        a:link {
+            color:#8C325B;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #008AD4;
+            text-decoration: none;
+        }
+        a:visited{
+            color: #8C325B;
+            text-decoration: none;
+        }
+
+        a:hover, a:focus {
+            color: #008AD4;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: #008AD4;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        background-color: #FFF4FB;
+        float:center;
+ 
+        color: #8C325B;
+        padding:40px;
+        border: #8C325B solid;
+        .content-list {
+            @include four-by-2-grid-display;
+        }
+
+    }
+
+    .anime-reviews{
+        overflow: scroll;
+        height: 785px;
+        display:flex;
+        flex-direction: column;
+        row-gap: 1ch;
+        button{
+            float:center;
+            font-family: $main-font;
+            font-size: 1.0em;
+            text-transform: uppercase;
+            width:20%;
+            padding: 20px;
+            background-color: #8C325B;
+            border: 0;
+            color:#FFE4F5;
+            height:60px;
+        }
+        .reviews{
+            background-color: #FFE4F5;
+            display:flex;
+            flex-direction: column;
+            border: #8C325B solid;
+            height: 250px;
+            .title{
+                .score{
+                    float: left;
+                    margin-top: 5px;
+                }
+                .summary{
+                    float: right;
+                    width: 250px;
+                    white-space: nowrap;
+                    overflow: auto;
+                    text-overflow: ellipsis;
+                    margin-top: -12px;
+                }
+               
+                border-bottom: #8C325B solid;
+                padding: 10px;
+                font-weight: bold;
+            } 
+            .body{
+                line-height: 32px; 
+                padding: 5px;
+                overflow: scroll;
+                height: 150px;
+
+
+            }
+        }
+    }
+
+    }
+}
+
+.anime-content{
+
     background-color: #ffb3db;
     margin-left: auto;
     margin-right: auto;
@@ -68,7 +322,7 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
                 font-size: 2.4ch;
             }
         }
-          width:100%;
+          width:auto;
 
     } 
 
@@ -76,13 +330,14 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     .search-anime {
         background-color: #ffb3db;
         padding: 50px;
-        width: 30%;
+        width: auto;
         
         margin-left: auto;
         margin-right: auto;
         margin-top: -2%;
         h2 {
             color: #8C325B;
+            text-transform: uppercase;
         }
         input {
             background-color: #FFF4FB;
@@ -106,14 +361,20 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             margin-top: 10px;
             font-size: 1.0em;
             font-family: $main-font;
+            text-transform: uppercase;
         }
     }
 
     .user-reviews{
         overflow: scroll;
         height: 785px;
-        display:grid;
-        row-gap: 55px;
+        display:flex;
+        flex-direction: column;
+        row-gap: 1ch;
+        background-color: #FFF4FB;
+        color: #8C325B;
+        padding:40px;
+        border: #8C325B solid;
         a:link {
             color:#FFF4FB;
             text-decoration: none;
@@ -143,14 +404,26 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             background-color: #8C325B;
             border: 0;
             color:#FFE4F5;
+            height:60px;
         }
        
         .user-review-info{
             display: flex;
+            img {
+                width:100%;
+            }
+       
+
             .tail {
                 p {
+                    padding:10px;
+                    width: 200px;
                     text-align: center;
                     text-transform: uppercase;
+                    word-break: break-word;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
     
                 }
                 margin-top: -4px;
@@ -167,18 +440,22 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             border: #8C325B solid;
             grid-template-rows: 50px 100px;
             grid-row-gap: 1px;
-            height: 98.5%;
+            height: 98.3%;
+            width: 100%;
             .title{
                 .score{
                     float: left;
+                    margin-top: 2px;
                 }
                 .summary{
                     float: right;
                     width: 250px;
                     white-space: nowrap;
-                    overflow: hidden;
+                    overflow: auto;
                     text-overflow: ellipsis;
+                    margin-top: -12px;
                 }
+               
                 border-bottom: #8C325B solid;
                 padding: 10px;
                 font-weight: bold;
@@ -187,7 +464,8 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
                 line-height: 32px; 
                 padding: 20px;
                 overflow: scroll;
-                height: 250px;
+                height: 30vh;
+                
 
 
             }
@@ -207,21 +485,17 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     }
 }
 
-.profile-image {
-    img {
-        margin-top: -15%;
-        margin-left: 20px;
-        width: 20%;
-    }
-}
 
 .activity{
     color:#8C325B;
     text-transform: uppercase;
     margin-left: 21px;
-    
+    .profile-button:disabled {
+        background: #A7E5FF;
+        color: #8C325B;
+    }
 
-    button {
+    .profile-button {
         font-family: $main-font;
         text-transform: uppercase;
         background-color: #8C325B;
@@ -237,7 +511,7 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         .save-button{
             margin-left: 6px;
         }
-        button {
+        .fav {
             width: 100%;
             padding:10px;
             margin-left: 0;
@@ -247,6 +521,28 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
 }
 
 .anime-info {
+    a:link {
+        color:#8C325B;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #008AD4;
+        text-decoration: none;
+    }
+    a:visited{
+        color: #8C325B;
+        text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        color: #008AD4;
+        text-decoration: none;
+    }
+
+    a:active {
+        color: #008AD4;
+        text-decoration: none;
+    }
     margin-top: 10px;
     background-color: #FFF4FB;
     color: #8C325B;
@@ -255,202 +551,6 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     padding: 10px;
     border: #8C325B solid;
    
-}
-
-
-.content {
-    .anime-summary{
-            a:link {
-                color:#8C325B;
-                text-decoration: none;
-            }
-            a:hover {
-                color: #008AD4;
-                text-decoration: none;
-            }
-            a:visited{
-                color: #8C325B;
-                text-decoration: none;
-            }
-    
-            a:hover, a:focus {
-                color: #008AD4;
-                text-decoration: none;
-            }
-    
-            a:active {
-                color: #008AD4;
-                background-color: transparent;
-                text-decoration: none;
-            }
-
-        .ch-name {
-            background-color: #8C325B;
-            color: #FFF4FB;
-            display: flex;
-            flex-grow: 4;
-            border: 3px solid #8C325B;
-            p {
-                font-weight: bold;
-                font-size: 5ch;
-                margin-top: 250px;
-                margin-left: 20%;
-            }
-
-        }
-        .character-summary{
-            line-height: 32px; 
-            white-space: pre-line;
-
-
-        }
-      
-        background-color: #FFF4FB;
-        width: 68.5%;
-        height: 100%;
-        float:center;
-        margin-left: 25%;
-        margin-right: 1em;
-        margin-top: -870px;
-        color: #8C325B;
-        padding:40px;
-        border: #8C325B solid;
-        .content-list {
-            @include four-by-2-grid-display;
-        }
-
-        ul {
-            list-style-type: none;
-            li{
-                margin-top:1em;
-                margin-left:-2em;
-            }
-
-        }
-        
-    
-    }
-
-    .anime-character{
-        background-color: #FFF4FB;
-        width: 68.5%;
-        height: 100%;
-        float:center;
-        margin-left: 25%;
-        margin-right: 1em;
-        margin-top: 10px;
-        color: #8C325B;
-        padding:40px;
-        border: #8C325B solid;
-        .content-list {
-            @include four-by-2-grid-display;
-            a:link {
-                color:#8C325B;
-                text-decoration: none;
-            }
-            a:hover {
-                color: #008AD4;
-                text-decoration: none;
-            }
-            a:visited{
-                color: #8C325B;
-                text-decoration: none;
-            }
-    
-            a:hover, a:focus {
-                color: #008AD4;
-                text-decoration: underline;
-            }
-    
-            a:active {
-                color: #008AD4;
-                background-color: transparent;
-                text-decoration: underline;
-            }
-        }
-
-    }
-
-    .anime-recommendation{
-        a:link {
-            color:#8C325B;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #008AD4;
-            text-decoration: none;
-        }
-        a:visited{
-            color: #8C325B;
-            text-decoration: none;
-        }
-
-        a:hover, a:focus {
-            color: #008AD4;
-            text-decoration: underline;
-        }
-
-        a:active {
-            color: #008AD4;
-            background-color: transparent;
-            text-decoration: underline;
-        }
-        background-color: #FFF4FB;
-        width: 68.5%;
-        height: 100%;
-        float:center;
-        margin-left: 25%;
-        margin-right: 1em;
-        margin-top: 10px;
-        color: #8C325B;
-        padding:40px;
-        border: #8C325B solid;
-        .content-list {
-            @include four-by-2-grid-display;
-        }
-
-    }
-
-    .anime-reviews{
-        overflow: scroll;
-        height: 785px;
-        display:grid;
-        row-gap: 1ch;
-        .reviews{
-            background-color: #FFE4F5;
-            display:grid;
-            border: #8C325B solid;
-            grid-template-rows: 50px 100px;
-            grid-row-gap: 1px;
-            height: 250px;
-            .title{
-                .score{
-                    float: left;
-                }
-                .summary{
-                    float: right;
-                    width: 250px;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-                border-bottom: #8C325B solid;
-                padding: 10px;
-                font-weight: bold;
-            } 
-            .body{
-                line-height: 32px; 
-                padding: 20px;
-                overflow: scroll;
-                height: 150px;
-
-
-            }
-
-        }
-
-    }
-    
 }
 
 .user-navbar {
@@ -511,7 +611,7 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             float: right;
             align-items: center;
             margin-left:10px;
-            margin-right: 4.5%;
+            margin-right: 2%;
             margin-top:30px;
         }
         a:link {
@@ -537,3 +637,62 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     }
 
 }
+
+.add-review {
+    padding: 50px;
+    background-color: #8C325B;
+    max-width: 503px;
+    margin: 5% auto 0 auto;
+    height: 100%;
+    p {
+        letter-spacing: 1px; 
+        font-weight: bold;
+        text-align: center;
+        font-size: 2.5em;
+        text-transform: uppercase;
+        color: #FFF4FB;
+    }
+    .review-input {
+        display: grid;
+        margin-top: 40px;
+        margin-left: 90px;
+        max-width: 335px;
+        row-gap: 2ch;
+        padding-bottom: 80px;
+        input, select, option{
+            color: #8C325B;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            background-color: #FFE4F5;
+            border: 0;
+            font-size: 2ch;
+            font-family:$main-font;
+        }
+
+        textarea{
+            width: 100%;
+            color: #8C325B;
+            max-width: 335px;
+            text-align: center;
+            background-color: #FFE4F5;
+            border: 0;
+            font-size: 2ch;
+            font-family:$main-font;
+        }
+
+        button {
+            text-transform: uppercase;
+            height: 40px;
+            border-radius: 2ch;
+            font-size: 2ch;
+            border: 0;
+            background-color: #AE6DAB;
+            color: #FFE4F5;
+            font-family:$main-font;
+            letter-spacing: 1px; 
+        }
+        
+    }
+}
+

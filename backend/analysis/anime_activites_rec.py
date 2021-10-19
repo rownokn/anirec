@@ -27,7 +27,7 @@ class AnimeActivityRec:
         return users
     
    
-    def recommend_item(self, similar_user_indices, items=10):
+    def recommend_item(self, similar_user_indices, items=30):
         similar_users = self.anime_pivot[self.anime_pivot.index.isin(similar_user_indices)]
         similar_users = similar_users.mean(axis=0)
         similar_users_df = pd.DataFrame(similar_users, columns=['average_score'])

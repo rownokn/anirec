@@ -1,35 +1,32 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {Link, useRouteMatch} from 'react-router-dom'
+import {useQuery} from 'react-query'
+import Loading from '../Loading'
+import loading_gif from '../../images/13335.gif'
+
+const fetchAnimeCharacter = async (anime_id) => {
+  const response = await fetch(`http://localhost:5000/anime/characters_list/${anime_id}`);
+  return await response.json()
+} 
+
 
 const AnimeCharacterSummary = ({anime_id}) => {
-  const [animeCharacters, setAnimeCharacters] = useState([])
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   let { url } = useRouteMatch();
+  
+  const {isLoading, data} = useQuery([anime_id], async () =>{
+    const data = await fetchAnimeCharacter(anime_id)
+    return data
+  })
 
 
-  const animeCharacter = async () => {
-    setIsError(false);
-    setIsLoading(true);
-    try {
-      const response = await fetch(`http://localhost:5000/anime/characters_list/${anime_id}`);
-      const info = await response.json()
-      console.log(info)
-      setAnimeCharacters(info.anime_characters)
-
-    }catch (err){
-      setIsError(true)
-    }
+  if (isLoading){
+    return <Loading />
   }
 
-  useEffect(() => {
-    animeCharacter()
-  }, [])
-  
   return (
 
       <div className='content-list'>
-        {animeCharacters.map (char => 
+        {data.anime_characters ?  (data.anime_characters.length  ? data.anime_characters.map (char => 
         <Link to={`${url}/character-profile/${char.id}`}>
           <div>
             <img src={char.image} alt='inu' />
@@ -37,7 +34,8 @@ const AnimeCharacterSummary = ({anime_id}) => {
           </div>
         </Link>
           
-        )}
+        ): <div><img src={loading_gif} alt='loading' /> <h3>No Characters Posted</h3></div>):
+        <div><img src={loading_gif} alt='loading' /> <h3>No Characters Posted</h3></div>}
 
       
       </div>     

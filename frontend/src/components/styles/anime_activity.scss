@@ -1,7 +1,7 @@
 $main-font: 'Comfortaa', 'Helvetica', 'serif';
 
 .manage {
-    button {
+    .activity-button {
         background-color: #8C325B;
         color: #ffe4f5;
         border: 0;
@@ -9,6 +9,10 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         text-transform: uppercase;
         height: 40px;
 
+    }
+    .activity-button:disabled {
+        background: #A7E5FF;
+        color: #8C325B;
     }
     display:flex;
     flex-direction: row;

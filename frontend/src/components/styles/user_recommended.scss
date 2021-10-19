@@ -1,0 +1,41 @@
+.user-rec{
+    padding: 50px;
+    margin-left: 2%;
+    margin-top: 1%;
+    border: #8C325B solid;
+    width:90%;
+    background-color: #fff4fb;
+
+
+    p {
+        color: #8C325B;
+    }
+    .header {
+        font-family: $main-font;
+        font-weight: bold;
+        font-size: larger;
+    }
+    a:link {
+        color:#8C325B;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #008AD4;
+        text-decoration: none;
+    }
+    a:visited{
+        color: #8C325B;
+        text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        color: #008AD4;
+        text-decoration: none;
+    }
+
+    a:active {
+        color: #008AD4;
+        background-color: transparent;
+        text-decoration: none;
+    }
+}

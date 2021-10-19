@@ -18,7 +18,8 @@ class AnimeData:
                     id,
                     title {
                         userPreferred,
-                        native                 
+                        native,
+                        english              
                     },
                     streamingEpisodes {
                         title,
@@ -173,50 +174,49 @@ class AnimeData:
 
     @staticmethod
     def insert_into_database():
-        page = 330
+        page = 0
         anime = AnimeData.anime_data(page)
         
-        while page < 334:
+        while page < 400:
             
             for ani in anime['media']:
-                if ani['id'] > 131728:
-                    print(ani)
-                    existing_anime_data=Anime.find_by_id(ani['id'])
-                    
-                    start_date = None
-                    end_date = None
-                    season = None
-                    if ani['season'] or ani['seasonYear']:
-                        season = ani['season'] + ' ' + str(ani['seasonYear'])
+                existing_anime_data=Anime.find_by_id(ani['id'])
+                """
+                start_date = None
+                end_date = None
+                season = None
+                if ani['season'] or ani['seasonYear']:
+                    season = ani['season'] + ' ' + str(ani['seasonYear'])
 
-                    if ani['endDate']['year'] and ani['endDate']['month'] and ani['endDate']['day']:
-                        end_date = datetime.date(ani['endDate']['year'], ani['endDate']['month'], ani['endDate']['day'])
+                if ani['endDate']['year'] and ani['endDate']['month'] and ani['endDate']['day']:
+                    end_date = datetime.date(ani['endDate']['year'], ani['endDate']['month'], ani['endDate']['day'])
 
+            
                 
-                    
-                    if ani['startDate']['year'] and ani['startDate']['month'] and ani['startDate']['day']:
-                        start_date = datetime.date(ani['startDate']['year'], ani['startDate']['month'], ani['startDate']['day'])
+                if ani['startDate']['year'] and ani['startDate']['month'] and ani['startDate']['day']:
+                    start_date = datetime.date(ani['startDate']['year'], ani['startDate']['month'], ani['startDate']['day'])
 
+                """       
                     
-                    
-                        if existing_anime_data:
-                            Anime.update_anime(ani['description'].replace("\'", "") if ani['description'] else "" ,ani['id'] )
-                        else:
-                            anime_insert = Anime(ani['id'],
-                                            ani['title']['userPreferred'],
-                                            ani['title']['native'],
-                                            ani['description'].replace("\'", "") if ani['description'] else "",
-                                            season,
-                                            ani['episodes'] if ani['episodes'] else 0, 
-                                            ani['status'],
-                                            ani['format'],
-                                            start_date if start_date else None,
-                                            end_date if end_date else None, 
-                                            ani['averageScore'],
-                                            ani['coverImage']['large'],
-                                            ani['bannerImage'])
-                            anime_insert.insert()
-
+                if existing_anime_data:
+                    Anime.update_anime(ani['title']['english'] ,ani['id'] )
+                    """
+                    else:
+                        anime_insert = Anime(ani['id'],
+                                        ani['title']['userPreferred'],
+                                        ani['title']['native'],
+                                        ani['description'].replace("\'", "") if ani['description'] else "",
+                                        season,
+                                        ani['episodes'] if ani['episodes'] else 0, 
+                                        ani['status'],
+                                        ani['format'],
+                                        start_date if start_date else None,
+                                        end_date if end_date else None, 
+                                        ani['averageScore'],
+                                        ani['coverImage']['large'],
+                                        ani['bannerImage'])
+                        anime_insert.insert()
+                    """
             page += 1
             anime = AnimeData.anime_data(page)
 

@@ -1,42 +1,41 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import {Link, useRouteMatch} from 'react-router-dom'
+import {useQuery} from 'react-query'
+import Loading from '../Loading'
+import loading_gif from '../../images/13335.gif'
+
+
+const fetchAnimeReview = async (anime_id) => {
+  const response = await fetch(`http://localhost:5000/anime/reviews/${anime_id}`);
+  return await response.json()
+} 
 
 const AnimeReviews = ({anime_id}) => {
-  const [animeReview, setAnimeReview] = useState([])
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const { url } = useRouteMatch();
+  const {isLoading, data} = useQuery([anime_id], async () =>{
+    const data = await fetchAnimeReview(anime_id)
+    return data
+  })
 
-  const reviews = async () => {
-    setIsError(false);
-    setIsLoading(true);
-    try {
-      const response = await fetch(`http://localhost:5000/anime/reviews/${anime_id}`);
-      const info = await response.json()
-      setAnimeReview(info.anime_reviews)
-      
-    }catch (err){
-      setIsError(true)
-    }
+  if (isLoading){
+    return <Loading />
   }
 
-  useEffect(() => {
-    reviews()
-  }, [])
-
-  console.log(animeReview)
   return (
     <div className='anime-summary anime-reviews'>
 
       <h2>Anime Reviews</h2>
-      {animeReview.map((rev) => 
+      <Link to={`${url}/add_anime_review`}><button>Add Review </button></Link>
+      {data.anime_reviews ? (data.anime_reviews.length  ? data.anime_reviews.map((rev) => 
         <div className='reviews'>
           <div className='title'>
           <span className='score'>Score: {rev.score}%</span>
-          <span className='summary'><p dangerouslySetInnerHTML={{__html: rev.sumary}} /></span>
+          <span className='summary'><p>{rev.sumary}</p></span>
           </div>
-          <div className='body'>{rev.description}</div>
+          <div className='body'><p dangerouslySetInnerHTML={{__html: rev.description}} /></div>
         </div>
         
-      )}
+      ): <div><img src={loading_gif} alt='loading' /> <h3>No Review</h3></div>):<div><img src={loading_gif} alt='loading' /> <h3>No Review</h3></div>}
 
     </div>
   )

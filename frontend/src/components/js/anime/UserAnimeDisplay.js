@@ -1,5 +1,7 @@
 import React, {useState, useEffect}  from 'react'
-import AnimeRec from './AnimeRec';
+import AnimeData from '../AnimeData';
+import loading_gif from '../../images/13335.gif'
+import error_gif from '../../images/tumblr_1522db257c8a8aadfd28391c265d19aa_b2d810c9_540.gif'
 
 
 const UserAnimeDisplay = ({anime_id}) => {
@@ -14,7 +16,9 @@ const UserAnimeDisplay = ({anime_id}) => {
     try {
       const response = await fetch(`http://localhost:5000/anime/recommendation/${anime_id}`);
       const info = await response.json()
-      console.log(info)
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 1000);
       setAnimeActivity(info.user_activity)
       setAnimeReview(info.review)
 
@@ -27,17 +31,25 @@ const UserAnimeDisplay = ({anime_id}) => {
     recommendations()
   }, [])
 
-  console.log(animeReview)
   return (
-    <span>
-      <p>Similmar Anime That Users Watched</p>
-      <AnimeRec animeRec={animeReview}/>
+    <div>    
+      {isError ? <div><img src={error_gif} alt='error_gif'/><h3>Error</h3></div> : (!isLoading ? <span>
+      <h3>Similar Anime That Users Watched</h3>
+      <AnimeData animeData={animeReview} style={'content-list'}/>
+      
+      <h3>Similar Anime That Users Reviewed</h3>
+      <AnimeData animeData={animeActivity} style={'content-list'}/>
+    </span>:
+    <div>
+      <img src={loading_gif} alt='loading_image'/> 
+       <h3>Loading Anime.....</h3>
 
-      <p>Similmar Anime That Users Reviewed</p>
-      <AnimeRec animeRec={animeActivity}/>   
-          
+       </div>)
+    
+}
 
-    </span>
+    </div>
+    
   )
 
 }

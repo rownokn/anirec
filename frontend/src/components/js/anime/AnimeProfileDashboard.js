@@ -7,16 +7,17 @@ import AnimeCharacters from './AnimeCharacters'
 import AnimeReviews from './AnimeReviews'
 import AnimeRecommendations from './AnimeRecommendations'
 import CharacterProfile from './CharacterProfile'
+import NewAnimeReview from './NewAnimeReview'
 
-const AnimeProfileDashboard = ({animeInfo, anime_id}) => {
+const AnimeProfileDashboard = ({animeInfo, anime_id, recommendation}) => {
   let { path } = useRouteMatch();
 
   return (
     <Switch>
-      <Route exact path={`${path}/anime-summary/:anime_id`}>
-        <AnimeSummary animeInfo= {animeInfo} anime_id={anime_id}/>
+      <Route exact path={`${path}/anime-summary`}>
+        <AnimeSummary animeInfo= {animeInfo} anime_id={anime_id} recommendation={recommendation}/>
       </Route>
-      <Route exact path={`${path}/episodes/:anime_id`}>
+      <Route exact path={`${path}/episodes`}>
         <AnimeEpisodes anime_id={anime_id}  />
       </Route>
       <Route exact path={`${path}/anime-tags`}>
@@ -37,6 +38,10 @@ const AnimeProfileDashboard = ({animeInfo, anime_id}) => {
       <Route exact path={`${path}/anime-summary/character-profile/:character_id`}>
         <CharacterProfile />
       </Route>
+      <Route exact path={`${path}/anime-reviews/add_anime_review`}>
+        <NewAnimeReview anime_id={anime_id} />
+      </Route>
+
     </Switch>
   )
 }

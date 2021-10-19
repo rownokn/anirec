@@ -5,8 +5,6 @@ const AnimeRecommendations = ({anime_id}) => {
   return (
     <div className='anime-summary'>
       <UserAnimeDisplay anime_id={anime_id} />
-     
-
     </div>
   )
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SearchUserAnime = () => {
+const SearchUserAnime = ({user, animeName}) => {
   return (
     <div className='search-anime'>
       <h2>Search Anime</h2>
-      <input type='text' /><br/>
-      <button>Search</button>
+      <input type='text' onChange={animeName} /><br/>
+      <button onClick={user}>Search</button>
     </div>
   )
 }

@@ -18,3 +18,11 @@ class Tag(ORM):
             values = [anime_id]
             cursor.execute(sql, values)
             return cursor.fetchall()
+
+    @classmethod
+    def select_tag_name(cls):
+         with cls.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"""SELECT name FROM {cls.tablename} where category <> 'Sexual Content'"""
+            cursor.execute(sql)
+            return cursor.fetchall()

@@ -6,19 +6,24 @@ import {Link} from 'react-router-dom'
 
 const AnimeList = () => {
   const {account} = useContext(AccountContext)
+  const [animeName, setAnimeName] = useState('')
   const [userAnimeInfo, setUserAnimeInfo] = useState([])
 
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const animeHandler = e => {
+    setAnimeName(e.target.value)
+  }
+
+
 
   const user = async () => {
-    setIsError(false);
-    setIsLoading(true);
+
     try {
       const response = await fetch(`http://localhost:5000/user/user_activity`, {
       method: "POST",
        body: JSON.stringify({
-         "user_id": account.account_id
+         "user_id": account.account_id,
+         "name": animeName
       }),
        headers: {
          "Content-Type": "application/json",
@@ -29,8 +34,8 @@ const AnimeList = () => {
       setUserAnimeInfo(info.users)
 
     }catch (err){
-      setIsError(true)
-    }
+      console.error(err)
+ }
 
   }
 
@@ -42,7 +47,7 @@ const AnimeList = () => {
 
   return (
     <div>
-      <SearchUserAnime />
+      <SearchUserAnime user={user} animeName={animeHandler} />
 
       <div >
         <table className='anime-table'>
@@ -59,7 +64,7 @@ const AnimeList = () => {
           {userAnimeInfo ? userAnimeInfo.map((user) => 
             <tr>
               <td><Link to={`/anime-profile/${user.anime_id}/anime-summary`}><img src={user.cover_image} alt='inu' /></Link></td>
-              <td>{user.name}</td>
+              <td>{user.eng_title ? (user.eng_title !== user.name ? user.eng_title + ' (' + user.name + ')' : user.name) :  user.name}</td>
               <td>{user.progress}</td>
               <td>{user.score}%</td>
               <td>{user.status}</td>

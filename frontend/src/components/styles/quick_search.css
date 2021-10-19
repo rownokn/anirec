@@ -1,0 +1,51 @@
+.quick-search-bar {
+  display: bock;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.quick-search-bar a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.quick-search-bar a:hover {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.quick-search-bar a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.quick-search-bar a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.quick-search-bar input {
+  background-color: #FFF4FB;
+  color: #8C325B;
+  border: 0;
+  border: 1px #8C325B solid;
+  height: 30px;
+  width: 500px;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  border-radius: 1ch;
+  font-size: 100%;
+  text-align: center;
+}
+
+.quick-search-bar button {
+  margin-left: -28px;
+  background-color: transparent;
+  color: #8C325B;
+  height: 30px;
+  border: 0;
+  border-radius: 1ch;
+}
+/*# sourceMappingURL=quick_search.css.map */

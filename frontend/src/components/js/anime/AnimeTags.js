@@ -1,40 +1,35 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
+import {Link} from 'react-router-dom'
+import {useQuery} from 'react-query'
+import Loading from '../Loading'
+import loading_gif from '../../images/13335.gif'
+
+const fetchAnimeTags = async (anime_id) => {
+  const response = await fetch(`http://localhost:5000/anime/tags/${anime_id}`);
+  return await response.json()
+} 
 
 const AnimeTags = ({anime_id}) => {
-  const [animeTags, setAnimeTags] = useState([])
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const {isLoading, data} = useQuery([anime_id], async () =>{
+    const data = await fetchAnimeTags(anime_id)
+    return data
+  })
 
-  const tags = async () => {
-    setIsError(false);
-    setIsLoading(true);
-    try {
-      const response = await fetch(`http://localhost:5000/anime/tags/${anime_id}`);
-      const info = await response.json()
-      console.log(info)
-      setAnimeTags(info.anime_tags)
-
-    }catch (err){
-      setIsError(true)
-    }
+  if (isLoading){
+    return <Loading />
   }
-
-  useEffect(() => {
-    tags()
-  }, [])
-
 
   return (
     <div className='anime-summary'>
       <h2>Anime Tags</h2>
       <ul>
-        {animeTags.map((tags) => 
+        {data.anime_tags ? data.anime_tags.map((tags) => 
           <li>
-            {tags.name}
+            <Link to={`/anime-categories/${tags.name}`}>{tags.name}</Link>
           </li>
-        )}
+        ): <div><img src={loading_gif} alt='loading' /> <h3>No Tags Posted</h3></div>}
       </ul>
-    </div>
+        </div>
   )
 }
 

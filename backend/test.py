@@ -1,7 +1,5 @@
-from model import Anime, Character
+from model import Anime, Character, AnimeStudio, AnimeGenre,Tag
 from service import AnimeBrowseInfo, AnimeInfo
 
 
-print(AnimeInfo.character_profile(1354))
-
-print(Anime.find_by_id(102437))
+print(AnimeInfo.dropdown_data())

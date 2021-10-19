@@ -1,6 +1,6 @@
 $main-font: 'Comfortaa', 'Helvetica', 'serif';
 
-.trending_anime, .popular_anime  {
+.trending-anime, .popular-anime  {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     overflow-wrap: break-word;
@@ -8,6 +8,12 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         max-width: 150px;
         max-height: 225px;
     }
+    p {
+        word-wrap: break-word;
+        word-break: break-all;
+        max-width: 150px;
+    }
+    
 }
 
 .anime-display {
@@ -22,11 +28,29 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         color: #008AD4;
         text-decoration: none;
     }
+    a:visited{
+        color: #8C325B;
+        text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        color: #008AD4;
+        text-decoration: none;
+    }
+
+    a:active {
+        color: #008AD4;
+        background-color: transparent;
+        text-decoration: none;
+    }
 
     
 }
 
 .popular, .trend{
+    h2 {
+        color: #8C325B;
+    }
     .more {
         float:right;
     }
@@ -40,11 +64,35 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
 
     p {
         color: #8C325B;
+        word-break: break-all;
     }
     .header {
         font-family: $main-font;
         font-weight: bold;
         font-size: larger;
+    }
+    a:link {
+        color:#8C325B;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #008AD4;
+        text-decoration: none;
+    }
+    a:visited{
+        color: #8C325B;
+        text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        color: #008AD4;
+        text-decoration: none;
+    }
+
+    a:active {
+        color: #008AD4;
+        background-color: transparent;
+        text-decoration: none;
     }
 }
 

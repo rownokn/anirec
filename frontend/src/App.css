@@ -1,0 +1,1133 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&display=swap");
+.App-header {
+  background-color: #8C325B;
+  color: #FFF4FB;
+  text-transform: uppercase;
+}
+
+.App-header .nav-bar {
+  padding: 0 10px;
+  margin: auto;
+  height: 70px;
+}
+
+.App-header .nav-bar .dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.App-header .nav-bar .dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  margin-top: 30px;
+  z-index: 1;
+  background-color: #8C325B;
+}
+
+.App-header .nav-bar .dropdown-content a {
+  float: none;
+  padding: 15px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.App-header .nav-bar .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.App-header .nav-bar img {
+  max-width: 90px;
+  max-height: 40px;
+  float: left;
+  margin-top: -15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App-header .nav-bar button {
+  background-color: transparent;
+  border: none;
+  color: #FFF4FB;
+  text-transform: uppercase;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  font-size: 1.8ch;
+}
+
+.App-header .nav-bar a, .App-header .nav-bar button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 20px;
+  margin-top: 10px;
+  background-color: transparent;
+}
+
+.App-header .nav-bar a:link {
+  color: #FFF4FB;
+  text-decoration: none;
+}
+
+.App-header .nav-bar a:visited {
+  color: #FFD8D0;
+  text-decoration: none;
+}
+
+.App-header .nav-bar a:hover, .App-header .nav-bar a:focus button:hover {
+  color: #FFE4F5;
+  text-decoration: underline;
+}
+
+.App-header .nav-bar a:active {
+  color: #FFDDEB;
+  text-decoration: none;
+}
+
+.App-header .nav-bar .main-navbar .main-link {
+  float: left;
+}
+
+.App-header .nav-bar .login-bar input {
+  background-color: #FFDDEB;
+  border: none;
+  border-radius: 1.5ch;
+  width: 200px;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  color: #8C325B;
+}
+
+.App-header .nav-bar .login-bar button {
+  background-color: transparent;
+  color: #FFDDEB;
+  border: none;
+  margin-right: 10px;
+  border-radius: 1.5ch;
+}
+
+.App-header .nav-bar .login-bar button:hover {
+  background-color: #FFDDEB;
+  color: #8C325B;
+}
+
+.App-header .nav-bar .login-bar input, .App-header .nav-bar .login-bar button {
+  margin-top: 8px;
+  height: 20px;
+}
+
+.App-header .nav-bar .login-bar .login-link, .App-header .nav-bar .login-bar input, .App-header .nav-bar .login-bar button, .App-header .nav-bar .login-bar .search-btn {
+  float: right;
+}
+
+.App-header .menu {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px 15px 14px 10px;
+}
+
+.account-box {
+  background-color: #8C325B;
+  margin: 5% auto 0 auto;
+  max-width: 503px;
+  height: 100%;
+}
+
+.account-box .account-input {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 40px;
+  margin-left: 90px;
+  max-width: 335px;
+  row-gap: 2ch;
+  padding-bottom: 80px;
+}
+
+.account-box .account-input input {
+  color: #8C325B;
+  max-width: 335px;
+  height: 30px;
+  text-align: center;
+  background-color: #FFE4F5;
+  border: 0;
+  font-size: 2ch;
+  font-family: "Comfortaa", "Helvetica", "serif";
+}
+
+.account-box .account-input button {
+  text-transform: uppercase;
+  height: 40px;
+  border-radius: 2ch;
+  font-size: 2ch;
+  border: 0;
+  background-color: #AE6DAB;
+  color: #FFE4F5;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  letter-spacing: 1px;
+}
+
+.account-box p {
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: #FFF4FB;
+}
+
+.account-box img {
+  margin-left: 28%;
+  margin-top: 5%;
+  max-width: 306px;
+  max-height: 120px;
+}
+
+.skeleton-loader-gradient {
+  width: 100%;
+  height: 15px;
+  display: block;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.5)), color-stop(80%, rgba(255, 255, 255, 0))), lightgray;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80%), lightgray;
+  background-repeat: repeat-y;
+  background-size: 50px 200px;
+  background-position: 0 0;
+}
+
+.anime-data {
+  background-color: #ffb3db;
+  margin-left: auto;
+  margin-right: auto;
+  float: center;
+  margin-top: 10px;
+  width: 50%;
+  padding: 100px;
+  border: 1px #8C325B solid;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  overflow-wrap: break-word;
+}
+
+.anime-data a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-data a:hover {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.anime-data a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-data a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.anime-data .title {
+  color: #8C325B;
+}
+
+.anime-data img {
+  max-width: 150px;
+  max-height: 225px;
+}
+
+.user-container .anime-table {
+  width: 100%;
+}
+
+.user-container .anime-table img {
+  height: 50%;
+  width: 50%;
+}
+
+.user-container .anime-table td, .user-container .anime-table th {
+  border: 1px solid #8C325B;
+  padding: 8px;
+  color: #8C325B;
+  text-align: center;
+}
+
+.user-container .anime-table tr:nth-child(even) {
+  background-color: #ffb3db;
+}
+
+.user-container .anime-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #8C325B;
+  color: #FFF4FB;
+}
+
+.user-container .anime-table tr td {
+  font-size: 2.4ch;
+}
+
+.user-container .search-anime {
+  background-color: #ffb3db;
+  padding: 50px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -2%;
+}
+
+.user-container .search-anime h2 {
+  color: #8C325B;
+}
+
+.user-container .search-anime input {
+  background-color: #FFF4FB;
+  color: #8C325B;
+  border: 0;
+  height: 30px;
+  width: 100%;
+  font-size: 20px;
+  border: solid #8C325B;
+  border-radius: 0.5ch;
+}
+
+.user-container .search-anime button {
+  background-color: #8C325B;
+  color: #FFF4FB;
+  border: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  width: 100px;
+  margin-left: 40%;
+  margin-top: 10px;
+  font-size: 1.0em;
+  font-family: "Comfortaa", "Helvetica", "serif";
+}
+
+.user-container .user-reviews {
+  overflow: scroll;
+  height: 785px;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 55px;
+}
+
+.user-container .user-reviews a:link {
+  color: #FFF4FB;
+  text-decoration: none;
+}
+
+.user-container .user-reviews a:hover {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.user-container .user-reviews a:visited {
+  color: #FFF4FB;
+  text-decoration: none;
+}
+
+.user-container .user-reviews a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.user-container .user-reviews button {
+  float: center;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  font-size: 1.0em;
+  text-transform: uppercase;
+  width: 20%;
+  padding: 20px;
+  background-color: #8C325B;
+  border: 0;
+  color: #FFE4F5;
+}
+
+.user-container .user-reviews .user-review-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.user-container .user-reviews .user-review-info .tail {
+  margin-top: -4px;
+  padding: 0.5%;
+  background-color: #8C325B;
+  color: #FFE4F5;
+}
+
+.user-container .user-reviews .user-review-info .tail p {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.user-container .user-reviews .reviews {
+  background-color: #FFE4F5;
+  display: -ms-grid;
+  display: grid;
+  border: #8C325B solid;
+  -ms-grid-rows: 50px 100px;
+      grid-template-rows: 50px 100px;
+  grid-row-gap: 1px;
+  height: 98.5%;
+}
+
+.user-container .user-reviews .reviews .title {
+  border-bottom: #8C325B solid;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.user-container .user-reviews .reviews .title .score {
+  float: left;
+}
+
+.user-container .user-reviews .reviews .title .summary {
+  float: right;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-container .user-reviews .reviews .body {
+  line-height: 32px;
+  padding: 20px;
+  overflow: scroll;
+  height: 250px;
+}
+
+.image-container img {
+  width: 100%;
+  max-height: 500px;
+}
+
+.profile-image img {
+  margin-top: -15%;
+  margin-left: 20px;
+  width: 20%;
+}
+
+.activity {
+  color: #8C325B;
+  text-transform: uppercase;
+  margin-left: 21px;
+}
+
+.activity button {
+  font-family: "Comfortaa", "Helvetica", "serif";
+  text-transform: uppercase;
+  background-color: #8C325B;
+  color: #ffb3db;
+  border: 0;
+  width: 20%;
+  height: 100%;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+
+.activity .fav-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.activity .fav-buttons .save-button {
+  margin-left: 6px;
+}
+
+.activity .fav-buttons button {
+  width: 100%;
+  padding: 10px;
+  margin-left: 0;
+}
+
+.anime-info {
+  margin-top: 10px;
+  background-color: #FFF4FB;
+  color: #8C325B;
+  width: 18.5%;
+  margin-left: 20px;
+  padding: 10px;
+  border: #8C325B solid;
+}
+
+.content .anime-summary {
+  background-color: #FFF4FB;
+  width: 68.5%;
+  height: 100%;
+  float: center;
+  margin-left: 25%;
+  margin-right: 1em;
+  margin-top: -870px;
+  color: #8C325B;
+  padding: 40px;
+  border: #8C325B solid;
+}
+
+.content .anime-summary a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.content .anime-summary a:hover {
+  color: #008AD4;
+  text-decoration: none;
+}
+
+.content .anime-summary a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.content .anime-summary a:hover, .content .anime-summary a:focus {
+  color: #008AD4;
+  text-decoration: none;
+}
+
+.content .anime-summary a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.content .anime-summary .ch-name {
+  background-color: #8C325B;
+  color: #FFF4FB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 4;
+      -ms-flex-positive: 4;
+          flex-grow: 4;
+  border: 3px solid #8C325B;
+}
+
+.content .anime-summary .ch-name p {
+  font-weight: bold;
+  font-size: 5ch;
+  margin-top: 250px;
+  margin-left: 20%;
+}
+
+.content .anime-summary .character-summary {
+  line-height: 32px;
+  white-space: pre-line;
+}
+
+.content .anime-summary .content-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  overflow-wrap: break-word;
+}
+
+.content .anime-summary .content-list img {
+  max-width: 150px;
+  max-height: 225px;
+}
+
+.content .anime-summary ul {
+  list-style-type: none;
+}
+
+.content .anime-summary ul li {
+  margin-top: 1em;
+  margin-left: -2em;
+}
+
+.content .anime-character {
+  background-color: #FFF4FB;
+  width: 68.5%;
+  height: 100%;
+  float: center;
+  margin-left: 25%;
+  margin-right: 1em;
+  margin-top: 10px;
+  color: #8C325B;
+  padding: 40px;
+  border: #8C325B solid;
+}
+
+.content .anime-character .content-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  overflow-wrap: break-word;
+}
+
+.content .anime-character .content-list img {
+  max-width: 150px;
+  max-height: 225px;
+}
+
+.content .anime-character .content-list a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.content .anime-character .content-list a:hover {
+  color: #008AD4;
+  text-decoration: none;
+}
+
+.content .anime-character .content-list a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.content .anime-character .content-list a:hover, .content .anime-character .content-list a:focus {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.content .anime-character .content-list a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.content .anime-recommendation {
+  background-color: #FFF4FB;
+  width: 68.5%;
+  height: 100%;
+  float: center;
+  margin-left: 25%;
+  margin-right: 1em;
+  margin-top: 10px;
+  color: #8C325B;
+  padding: 40px;
+  border: #8C325B solid;
+}
+
+.content .anime-recommendation a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.content .anime-recommendation a:hover {
+  color: #008AD4;
+  text-decoration: none;
+}
+
+.content .anime-recommendation a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.content .anime-recommendation a:hover, .content .anime-recommendation a:focus {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.content .anime-recommendation a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.content .anime-recommendation .content-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  overflow-wrap: break-word;
+}
+
+.content .anime-recommendation .content-list img {
+  max-width: 150px;
+  max-height: 225px;
+}
+
+.content .anime-reviews {
+  overflow: scroll;
+  height: 785px;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 1ch;
+}
+
+.content .anime-reviews .reviews {
+  background-color: #FFE4F5;
+  display: -ms-grid;
+  display: grid;
+  border: #8C325B solid;
+  -ms-grid-rows: 50px 100px;
+      grid-template-rows: 50px 100px;
+  grid-row-gap: 1px;
+  height: 250px;
+}
+
+.content .anime-reviews .reviews .title {
+  border-bottom: #8C325B solid;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.content .anime-reviews .reviews .title .score {
+  float: left;
+}
+
+.content .anime-reviews .reviews .title .summary {
+  float: right;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content .anime-reviews .reviews .body {
+  line-height: 32px;
+  padding: 20px;
+  overflow: scroll;
+  height: 150px;
+}
+
+.user-navbar nav {
+  background-color: #FFF4FB;
+  text-transform: uppercase;
+  width: 98.5%;
+  height: 70px;
+  padding: 0 10px;
+  margin: auto;
+  margin-top: -10px;
+  font-size: 1.0rem;
+  text-align: center;
+}
+
+.user-navbar nav a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+  margin-right: 12%;
+  margin-top: 30px;
+}
+
+.user-navbar nav a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.user-navbar nav a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.user-navbar nav a:hover, .user-navbar nav a:focus {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.user-navbar nav a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.anime-navbar nav {
+  background-color: #FFF4FB;
+  text-transform: uppercase;
+  width: 98.5%;
+  height: 70px;
+  padding: 0 10px;
+  margin: auto;
+  margin-top: -10px;
+  font-size: 1.0rem;
+  text-align: center;
+}
+
+.anime-navbar nav a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+  margin-right: 4.5%;
+  margin-top: 30px;
+}
+
+.anime-navbar nav a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-navbar nav a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-navbar nav a:hover, .anime-navbar nav a:focus {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.anime-navbar nav a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.trending_anime, .popular_anime {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  overflow-wrap: break-word;
+}
+
+.trending_anime img, .popular_anime img {
+  max-width: 150px;
+  max-height: 225px;
+}
+
+.anime-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 50px;
+}
+
+.anime-display a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-display a:hover {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.anime-display a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.anime-display a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.popular, .trend {
+  padding: 50px;
+  margin-left: 2%;
+  margin-top: 1%;
+  border: #8C325B solid;
+  width: 90%;
+  background-color: #fff4fb;
+}
+
+.popular .more, .trend .more {
+  float: right;
+}
+
+.popular p, .trend p {
+  color: #8C325B;
+}
+
+.popular .header, .trend .header {
+  font-family: "Comfortaa", "Helvetica", "serif";
+  font-weight: bold;
+  font-size: larger;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.modal.enter-done {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+.modal.exit {
+  opacity: 0;
+}
+
+.modal-content {
+  width: 100%;
+  height: 100%;
+  background-color: #ffe4f5;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
+  overflow: scroll;
+}
+
+.modal.enter-done .modal-content {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.modal.exit .modal-content {
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
+}
+
+.modal-header,
+.modal-footer {
+  padding: 10px;
+  background-color: #8C325B;
+  color: #ffe4f5;
+}
+
+.modal-header button,
+.modal-footer button {
+  background-color: transparent;
+  color: #ffe4f5;
+  border: 0;
+  font-size: 100%;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  padding: 10px;
+  float: right;
+  margin-top: -30px;
+}
+
+.modal-footer button {
+  background-color: #FFF4FB;
+  color: #8C325B;
+  border: 0;
+  height: 40px;
+  width: 200px;
+  font-size: 100%;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.quick-search-bar {
+  display: bock;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.quick-search-bar a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.quick-search-bar a:hover {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.quick-search-bar a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.quick-search-bar a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.quick-search-bar input {
+  background-color: #FFF4FB;
+  color: #8C325B;
+  border: 0;
+  border: 1px #8C325B solid;
+  height: 30px;
+  width: 500px;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  border-radius: 1ch;
+  font-size: 100%;
+  text-align: center;
+}
+
+.quick-search-bar button {
+  margin-left: -28px;
+  background-color: transparent;
+  color: #8C325B;
+  height: 30px;
+  border: 0;
+  border-radius: 1ch;
+}
+
+.manage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px 10%;
+}
+
+.manage button {
+  background-color: #8C325B;
+  color: #ffe4f5;
+  border: 0;
+  font-family: "Comfortaa", "Helvetica", "serif";
+  text-transform: uppercase;
+  height: 40px;
+}
+
+.manage .user-activity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px 20px;
+}
+
+.manage .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+  gap: 20px 20px;
+  margin-top: 50px;
+}
+
+.manage .content p {
+  color: #8C325B;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+
+.manage .content select, .manage .content option {
+  color: #8C325B;
+  max-width: 335px;
+  height: 35px;
+  width: 510px;
+  text-align: center;
+  background-color: #FFF4FB;
+  border: 0;
+  border: solid #8C325B 1px;
+  font-size: 2ch;
+  font-family: "Comfortaa", "Helvetica", "serif";
+}
+
+.manage .content input {
+  color: #8C325B;
+  max-width: 335px;
+  height: 30px;
+  width: 500px;
+  text-align: center;
+  background-color: #FFF4FB;
+  border: 0;
+  border: solid #8C325B 1px;
+  font-size: 2ch;
+  font-family: "Comfortaa", "Helvetica", "serif";
+}
+
+.user-rec {
+  padding: 50px;
+  margin-left: 2%;
+  margin-top: 1%;
+  border: #8C325B solid;
+  width: 90%;
+  background-color: #fff4fb;
+}
+
+.user-rec p {
+  color: #8C325B;
+}
+
+.user-rec .header {
+  font-family: "Comfortaa", "Helvetica", "serif";
+  font-weight: bold;
+  font-size: larger;
+}
+
+.user-rec a:link {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.user-rec a:hover {
+  color: #008AD4;
+  text-decoration: underline;
+}
+
+.user-rec a:visited {
+  color: #8C325B;
+  text-decoration: none;
+}
+
+.user-rec a:active {
+  color: #008AD4;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Comfortaa', 'Helvetica', 'serif';
+  background-color: #ffe4f5;
+}
+
+.welcome img {
+  width: 100%;
+}
+/*# sourceMappingURL=App.css.map */

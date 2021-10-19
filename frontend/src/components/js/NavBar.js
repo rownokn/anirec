@@ -21,12 +21,12 @@ const NavBar = () => {
             <div class='main-navbar'> 
               <Link className='main-link' to='/'><img src={transparent_logo} alt='logo' /></Link>       
               <Link className='main-link' to='/user-profile/anime-list'>Anime List</Link>
-              <Link className='main-link' to='/'>User Recommended</Link>  
+              <Link className='main-link' to='/anime-user-rec'>Recommended For User</Link>  
               <div className='main-link dropdown'>
                 <button>Browse&nbsp; <i><FontAwesomeIcon icon={faCaretDown} /></i></button>
                 <div className="dropdown-content">
                     <Link to='/popular-trending'>popular/trending anime</Link>
-                    <Link to='/'>advanced search</Link>
+                    <Link to='/advanced-search'>advanced search</Link>
                 </div>
               </div>   
             </div>
@@ -51,7 +51,7 @@ const NavBar = () => {
                 <button>Browse&nbsp; <i><FontAwesomeIcon icon={faCaretDown} /></i></button>
                 <div class="dropdown-content">
                     <Link to='/popular-trending'>popular/trending anime</Link>
-                    <Link to='/'>advanced search</Link>
+                    <Link to='/advanced-search'>advanced search</Link>
                 </div>
               </div>              
             </div>
