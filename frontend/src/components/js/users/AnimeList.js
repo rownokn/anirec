@@ -49,7 +49,7 @@ const AnimeList = () => {
     <div>
       <SearchUserAnime user={user} animeName={animeHandler} />
 
-      <div >
+      <div className="anime-user-data">
         <table className='anime-table'>
           <thead>
             <tr>

@@ -51,3 +51,24 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         max-height: 120px;
       }
 }
+
+
+
+@media screen and (max-height: 900px) and (max-width: 500px) {
+    .account-box {
+        margin-left: 0px;
+        img {
+            margin-left: 24%;
+          
+        }
+        
+        .account-input{
+            align-items: center;
+            margin-left: 24%;
+            width: 50%;
+
+        }
+
+    }
+
+}

@@ -46,3 +46,19 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     }
     
 }
+@media screen and (max-height: 900px) and (max-width: 500px) {
+    .quick-search-bar {
+        input {
+            width:300px;
+        }
+        button {
+            margin-left:-28px;
+            background-color: transparent;
+            color: #8C325B;
+            height: 30px;;
+            border:0;
+            border-radius: 1ch;
+        }
+    }
+    
+}

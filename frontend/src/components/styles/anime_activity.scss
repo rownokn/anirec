@@ -39,9 +39,8 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         margin-top: 50px;
         select, option {
             color: #8C325B;
-            max-width: 335px;
             height: 35px;
-            width: 510px;
+            width: 341px;
             text-align: center;
             background-color: #FFF4FB;
             border: 0;
@@ -51,9 +50,8 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         }
         input {
             color: #8C325B;
-            max-width: 335px;
             height: 30px;
-            width: 500px;
+            width: 335px;
             text-align: center;
             background-color: #FFF4FB;
             border: 0;
@@ -62,5 +60,36 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             font-family:$main-font;
         }
     }
+}
+
+@media screen and (max-width: 566px) {
+    .manage {
+      
+        display:flex;
+        flex-direction: column-reverse;
+        .content {
+            margin-top: 0;
+            p{
+                font-size: 3ch;
+                background-color: #8C325B;
+                color: #FFF4FB;
+                padding:20px;
+            }
+            select, option {
+                width: 98%+1.7;
+               
+            }
+            input {
+                width: 98%;
+               
+            }
+           
+            
+        }
+           
+        
+    }
+
+
 }
 

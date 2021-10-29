@@ -96,3 +96,69 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     }
 }
 
+
+@media screen and (max-height: 900px) and (max-width: 700px) {
+    .trending-anime, .popular-anime  {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow-wrap: break-word;
+        img {
+            max-width: 90px;
+            max-height: 225px;
+        }
+        p {
+            word-wrap: break-word;
+            word-break: break-all;
+            max-width: 150px;
+            font-size: 1ch;
+        }
+        
+    }
+
+
+    .popular, .trend{
+
+        padding: 50px;
+        margin-left: 0;
+        border: #8C325B solid;
+        width:71.5%;
+        background-color: #fff4fb;
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 1100px) and (min-width: 700px) {
+    .trending-anime, .popular-anime  {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        overflow-wrap: break-word;
+        img {
+            max-width: 110px;
+            max-height: 225px;
+        }
+        p {
+            word-wrap: break-word;
+            word-break: break-all;
+            max-width: 150px;
+            font-size: 1.3ch;
+        }
+        
+    }
+
+
+    .popular, .trend{
+
+        padding: 50px;
+        margin-left: 5px;
+        border: #8C325B solid;
+        width:85%;
+        background-color: #fff4fb;
+    }
+
+
+
+}
+

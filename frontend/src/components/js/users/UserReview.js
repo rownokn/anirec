@@ -51,7 +51,7 @@ const UserReview = ({user_id}) => {
            <div className='tail'><p>{rev.eng_title ? (rev.eng_title !== rev.name ? rev.eng_title + ' (' + rev.name + ')' : rev.name) :  rev.name}</p></div></Link>
           </div>
           <div className='reviews'>
-            <div className='title'>
+            <div className='title rev-title'>
               <span className='score'>Score: {rev.score}% </span>
               <span className='summary'>
                 <p dangerouslySetInnerHTML={{__html: rev.sumary}} />

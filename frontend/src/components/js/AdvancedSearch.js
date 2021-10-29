@@ -139,6 +139,77 @@ const AdvancedSearch = () => {
 
   return (
     <div className='advanced-search'>
+        <div className='mobile-search'>
+          <div class='header'><h4>Anime Search</h4></div>
+          <label for='anime-name'>Name: </label>
+          <input type='text' onChange={animeNameHandler} />
+          <label for='genre-name'>Genre: </label>
+          <select onChange={genreHandler}>
+                <option></option>
+                {
+                  genres.map(genre => 
+                    <option value={genre}>{genre}</option>
+                  )
+                }
+          </select>
+          <label for='tag-name'>Tag: </label>
+          <select onChange={tagHandler}>
+                    <option></option>
+                    {
+                        tags.map(tag => 
+                          <option value={tag}>{tag}</option>
+                        )
+                    }
+          </select>
+          <label for='tag-name'>Studio: </label>
+          <select onChange={studioHandler}>
+                    <option></option>
+                    {
+                        studios.map(studio => 
+                          <option value={studio}>{studio}</option>
+                        )
+                    }
+          </select>
+          <label for='tag-name'>Season: </label>
+          <select onChange={seasonHandler}>
+                  <option></option>
+                  <option value='FALL'>Fall</option>
+                  <option value='WINTER'>Winter</option>
+                  <option value='SUMMER'>Summer</option>
+                  <option value='SPRING'>Spring</option>
+          </select>
+          <label for='tag-name'>Format: </label>
+          <select onChange={formatHandler}>
+                    <option></option>
+                    {
+                        formats.map(format => 
+                          <option value={format}>{format}</option>
+                        )
+                    }
+          </select>
+          <label for='tag-name'>Status: </label>
+          <select onChange={statusHandler}>
+                    <option></option>
+                    {
+                        statuses.map(status => 
+                          <option value={status}>{status}</option>
+                        )
+                    }
+          </select>
+          <label for='tag-name'>Date Release Range: </label>
+          <div className='date'><input type='date' onChange={startDateHandler} />&nbsp;&nbsp; <span>To</span> &nbsp;&nbsp; <input type='date' onChange={endDateHandler} /></div>
+          <label for='tag-name'>Year: </label>
+          {disabledYear ? <input id="rangeInput"  type='range' min='1970' max={new Date().getFullYear().toString()} onChange={yearHandler} disabled/> : <input id="rangeInput"  type='range' min='1970' max={new Date().getFullYear().toString()} onChange={yearHandler}/>}
+          <div class='year-display'>
+                <label>{disabledYear ? 'N/A' : year}</label>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; &nbsp; 
+                <label>Disable Year:</label> <input type="checkbox" onChange={disableYear}/>
+          </div>   
+          <button className='submit' onClick={anime}>Submit</button>   
+
+        </div>
+
+
+
         <table className='anime-search'>
           <tr>
             <th colspan="3" className='title'>Anime Search</th>

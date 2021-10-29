@@ -39,3 +39,32 @@
         text-decoration: none;
     }
 }
+
+@media screen and (min-width: 1px) and (max-width: 680px) {
+    body{
+        width:100%;
+    }
+    .user-rec{
+        p{
+            font-size: 1.0ch;
+
+        }
+        margin-left: 0;
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 681px) and (max-width: 1050px) {
+    body{
+        width:100%;
+    }
+    .user-rec{
+        p{
+            font-size: 1.4ch;
+
+        }
+        margin-left: 0;
+        width: 84%;
+    }
+}
+

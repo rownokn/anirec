@@ -25,7 +25,7 @@ const AnimeProfileDisplay = ({animeInfo, userActivity, setUserActivity, recommen
   const content = () => {
     if (hght > 331){
       const mystyle = {
-        marginTop: '-14%'
+        marginTop: '-12.0%'
       }
         return <div className='content' style={mystyle}>
         {animeInfo.character ? <AnimeProfileDashboard 
