@@ -70,7 +70,7 @@ const AnimeActivty = ({anime_id, animeInfo, userActivity, setUserActivity, accou
             className: 'toast'
           });
         }else{
-          const response = await fetch('http://localhost:5000/user/manage_activity', config);
+          const response = await fetch('http://localhost:8000/user/manage_activity', config);
           const userInfo = await response.json();
           toast.success(userInfo.msg, {
             position: toast.POSITION.TOP_CENTER,
@@ -96,7 +96,7 @@ const AnimeActivty = ({anime_id, animeInfo, userActivity, setUserActivity, accou
         Authorization: `Bearer ${account.session_id}`
       }
     }
-    const response = await fetch(`http://localhost:5000/user/delete_activity/${account.account_id}/${anime_id}`, config);
+    const response = await fetch(`http://localhost:8000/user/delete_activity/${account.account_id}/${anime_id}`, config);
     const userInfo = await response.json();
     toast.success(userInfo.msg, {
       position: toast.POSITION.TOP_CENTER,
@@ -110,12 +110,12 @@ const AnimeActivty = ({anime_id, animeInfo, userActivity, setUserActivity, accou
     <div>
       {account.account_id ? (Object.keys(userActivity).length === 0 ? <button  className='profile-button activity-button' onClick={() => setShow(true)}>Add Activity</button>: <button className='profile-button activity-button' onClick={() => setShow(true)}>{status}</button> ) : <button className='profile-button activity-button'>Please Login to see activity</button>}
       <Modal title={animeInfo.name} onClose={() => setShow(false)} show={show}>
-        <div class='manage'>
-          <div class='user-activity'>
+        <div className='manage'>
+          <div className='user-activity'>
             <img src={animeInfo.cover_image} alt='cover_photo'/>
              {activtiesExist ? <button className='activity-button' onClick={deleteActivity}>Delete This Activity</button> : <button className='activity-button' onClick={deleteActivity} disabled>Delete This Activity</button> }
           </div>
-          <div class='content'>
+          <div className='content'>
             <p>ACTIVITY</p>
             <select value={status} onChange={statusHandler} placeholder='Status'>
               <option value>Status</option>

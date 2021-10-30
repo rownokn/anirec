@@ -809,13 +809,10 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
                     }
                 }
                 .ch-name {
+                  
                     color: #FFE4F5;
                     display: flex;
                     flex-direction: column;
-                    height:100%;
-                    border: 3px solid #8C325B;
-
-                   
                     p {
                         font-weight: bold;
                         font-size: 3ch;
@@ -1105,11 +1102,14 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             }
             .anime-summary {
                 .ch-name {
+                    
                     color: #FFE4F5;
                     display: flex;
                     flex-direction: column;
                     height:100%;
+                    width: 40%;
                     border: 3px solid #8C325B;
+                    margin-left: 170px;
 
                    
                     p {
@@ -1364,8 +1364,8 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
                     color: #FFE4F5;
                     display: flex;
                     flex-direction: column;
-                    height:100%;
-                    border: 3px solid #8C325B;
+                    width: 50%;
+                    margin-left: 170px;
 
                    
                     p {

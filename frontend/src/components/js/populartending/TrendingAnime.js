@@ -12,7 +12,7 @@ const TrendingAnime = () => {
   }
 
   return (
-      <div class='trend'>
+      <div className='trend'>
         <h2>Trending Anime</h2>
         <AnimeData animeData={data.trend} style='trending-anime' />
       </div>

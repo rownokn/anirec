@@ -23,7 +23,7 @@ const AnimeProfile = () => {
   const anime = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/anime/profile/${anime_id}/${account.account_id}`);
+      const response = await fetch(`http://localhost:8000/anime/profile/${anime_id}/${account.account_id}`);
       const info = await response.json()
       setTimeout(() => {
         setIsLoading(false)

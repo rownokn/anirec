@@ -5,6 +5,9 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
         display: none;
     }
     .anime-search {
+        span{
+            color:#008AAC;
+        }
         border: solid #008AAC;
         margin: auto;
         margin-top: 40px;
@@ -137,11 +140,23 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
 
 
     }
+
+
 } 
 
-@media screen and (min-width: 1px) and (max-width: 800px) {
+@media screen and (min-width: 1px) and (max-width: 850px) {
     .advanced-search {
         .mobile-search{
+            .date{
+                display: flex;
+                flex-direction: column;
+                gap: 10px 20px; 
+                span{
+                    text-align: center;
+                    color: #008AAC;
+                }
+
+            }
             padding: 5px;
             .submit{
                 background-color: #00C0E3;
@@ -173,7 +188,7 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
                 font-size: 100%;
                 height:30px;
                 color: #005B95;
-                width: 157px;
+                width: 100%;
                 
             }
         
@@ -202,3 +217,5 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
        }
     }
 }
+
+

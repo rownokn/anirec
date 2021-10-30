@@ -13,7 +13,7 @@ const PopularAnime = () => {
     return <Loading />
   }
   return (
-    <div class='popular'>
+    <div className='popular'>
       <h2>Popular Anime</h2>
       <AnimeData animeData={data.popular} style='popular-anime' />
     </div> 

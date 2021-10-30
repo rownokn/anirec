@@ -19,7 +19,7 @@ const AnimeList = () => {
   const user = async () => {
 
     try {
-      const response = await fetch(`http://localhost:5000/user/user_activity`, {
+      const response = await fetch(`http://localhost:8000/user/user_activity`, {
       method: "POST",
        body: JSON.stringify({
          "user_id": account.account_id,
@@ -63,7 +63,7 @@ const AnimeList = () => {
           <tbody>
           {userAnimeInfo ? userAnimeInfo.map((user) => 
             <tr>
-              <td><Link to={`/anime-profile/${user.anime_id}/anime-summary`}><img src={user.cover_image} alt='inu' /></Link></td>
+              <td><Link key={user.anime_id} to={`/anime-profile/${user.anime_id}/anime-summary`}><img src={user.cover_image} alt='inu' /></Link></td>
               <td>{user.eng_title ? (user.eng_title !== user.name ? user.eng_title + ' (' + user.name + ')' : user.name) :  user.name}</td>
               <td>{user.progress}</td>
               <td>{user.score}%</td>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Link, useRouteMatch} from 'react-router-dom'
 import {useQuery} from 'react-query'
 import Loading from '../Loading'
@@ -6,7 +6,7 @@ import loading_gif from '../../images/13335.gif'
 
 
 const fetchAnimeReview = async (anime_id) => {
-  const response = await fetch(`http://localhost:5000/anime/reviews/${anime_id}`);
+  const response = await fetch(`http://localhost:8000/anime/reviews/${anime_id}`);
   return await response.json()
 } 
 
@@ -26,8 +26,8 @@ const AnimeReviews = ({anime_id}) => {
 
       <h2>Anime Reviews</h2>
       <Link to={`${url}/add_anime_review`}><button>Add Review </button></Link>
-      {data.anime_reviews ? (data.anime_reviews.length  ? data.anime_reviews.map((rev) => 
-        <div className='reviews'>
+      {data.anime_reviews ? (data.anime_reviews.length  ? data.anime_reviews.map((rev, id) => 
+        <div key={id} className='reviews'>
           <div className='title'>
           <span className='score'>Score: {rev.score}%</span>
           <span className='summary'><p>{rev.sumary}</p></span>

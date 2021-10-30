@@ -16,21 +16,21 @@ const PopulatTrendingDisplay = () => {
 
   return (
       <div>
-      <div class='anime-display'>
-        <div class='popular'>
-          <p class='header'>Popular Anime</p>
+      <div className='anime-display'>
+        <div className='popular'>
+          <p className='header'>Popular Anime</p>
 
           <AnimeData animeData={data.popular.slice(0,6)} style={'popular-anime'} />
 
-          <Link to='/more-popular-anime'> <p class='more'>View More Popular Anime</p></Link>
+          <Link to='/more-popular-anime'> <p className='more'>View More Popular Anime</p></Link>
         </div>
           
-        <div class='trend'>
-          <p class='header'>Trending Anime</p>
+        <div className='trend'>
+          <p className='header'>Trending Anime</p>
           <AnimeData animeData={data.trend.slice(0,6)} style={'trending-anime'} />
 
          
-          <Link to='/more-trending-anime'> <p class='more'>View More Trending Anime</p></Link>
+          <Link to='/more-trending-anime'> <p className='more'>View More Trending Anime</p></Link>
          </div>
   
     </div>

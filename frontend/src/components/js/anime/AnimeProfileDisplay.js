@@ -12,8 +12,9 @@ import reactImageSize from 'react-image-size';
 
 const AnimeProfileDisplay = ({animeInfo, userActivity, setUserActivity, recommendation, genre, studio, anime_id, account, activtiesExist, setActivitiesExist, favExist, setFavExist}) => {
   const [hght, setHght] = useState(0)
+  
   const getHeight = async () => {
-    const {width, height } = await reactImageSize(animeInfo.cover_image)
+    const {height } = await reactImageSize(animeInfo.cover_image)
     setHght(height)
   }
 
@@ -21,7 +22,6 @@ const AnimeProfileDisplay = ({animeInfo, userActivity, setUserActivity, recommen
     getHeight()
   })
 
-  console.log(hght)
   const content = () => {
     if (hght > 331){
       const mystyle = {
@@ -149,15 +149,15 @@ const AnimeProfileDisplay = ({animeInfo, userActivity, setUserActivity, recommen
 
                 <div>Genres:
                   <ul>
-                    {genre.map(genre => 
-                      <Link to={`/anime-categories/${genre}`}><li>{genre}</li></Link>
+                    {genre.map((genre,id) => 
+                      <Link key={id} to={`/anime-categories/${genre}`}><li>{genre}</li></Link>
                       )}
                   </ul>
                 </div>
                 <div>Studios:
                   <ul>
-                    {studio.map(studio => 
-                      <Link to={`/anime-studio/${studio}`}><li>{studio}</li></Link>
+                    {studio.map((studio,id) => 
+                      <Link key={id} to={`/anime-studio/${studio}`}><li>{studio}</li></Link>
                       )}
                   </ul>
                 </div>

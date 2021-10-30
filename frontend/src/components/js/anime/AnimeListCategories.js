@@ -6,7 +6,7 @@ import {useQuery} from 'react-query'
 
 
 const fetchAnimeCategories = async (category_name) => {
-  const response = await fetch(`http://localhost:5000/anime/anime_by_category/${category_name}`);
+  const response = await fetch(`http://localhost:8000/anime/anime_by_category/${category_name}`);
   return await response.json()
 } 
 

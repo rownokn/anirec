@@ -27,7 +27,7 @@ const SignUp = () => {
   }
 
   const user = async () => {
-    const response = await fetch(`http://localhost:5000/user/users`)
+    const response = await fetch(`http://localhost:8000/user/users`)
     const info = await response.json()
 
     for (let user of info){
@@ -99,7 +99,7 @@ const SignUp = () => {
             className: 'toast'
           });
         }else{
-          const response = await fetch('http://localhost:5000/user/register', config);
+          const response = await fetch('http://localhost:8000/user/register', config);
           const userInfo = await response.json();
           toast.success("Registration Sucessful", {
             position: toast.POSITION.TOP_CENTER,
@@ -130,7 +130,7 @@ const SignUp = () => {
 
 
   return (
-    <div class='account-box'>
+    <div className='account-box'>
        <img src={transparent_logo} alt='logo' />
        <p>Sign Up</p>
        <div className='account-input'>

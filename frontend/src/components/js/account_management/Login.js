@@ -18,13 +18,13 @@ const Login = () => {
 
 
   return (
-    <div class='account-box'>
+    <div className='account-box'>
        <img src={transparent_logo} alt='logo' />
        <p>login</p>
        <div className='account-input'>
           <input type='text' placeholder='Username' onChange={usernameHandler}/>
           <input type='password' placeholder='Password' onChange={passwordHandler}/>
-          <button class='login-submit' onClick={() => authenticate(username, password)}>submit</button>
+          <button className='login-submit' onClick={() => authenticate(username, password)}>submit</button>
           <ToastContainer />
        </div>
        

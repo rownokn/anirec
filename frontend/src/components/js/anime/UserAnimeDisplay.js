@@ -14,7 +14,7 @@ const UserAnimeDisplay = ({anime_id}) => {
     setIsError(false);
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/anime/recommendation/${anime_id}`);
+      const response = await fetch(`http://localhost:8000/anime/recommendation/${anime_id}`);
       const info = await response.json()
       setTimeout(() => {
         setIsLoading(false)

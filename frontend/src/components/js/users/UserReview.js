@@ -14,7 +14,7 @@ const UserReview = ({user_id}) => {
     setIsError(false);
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/user/user_review`, {
+      const response = await fetch(`http://localhost:8000/user/user_review`, {
         method: "POST",
          body: JSON.stringify({
            "user_id": account.account_id
@@ -43,8 +43,8 @@ const UserReview = ({user_id}) => {
 
       <h2>User Reviews</h2>
       <Link to={`${url}/add-user-review`}><button>Add Review </button></Link>
-      {userReview ? userReview.map((rev) => 
-        <div className='user-review-info'>
+      {userReview ? userReview.map((rev, id) => 
+        <div key={id} className='user-review-info'>
           <div className='anime-review-title'>
           <Link to={`/anime-profile/${rev.anime_id}/anime-summary`}>
             <img src={rev.cover_image} alt='rev_image' />

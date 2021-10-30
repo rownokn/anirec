@@ -26,7 +26,7 @@ const AccountProvider = ({children}) => {
       }
     }
 
-    const response = await fetch('http://localhost:5000/user/login', configs)
+    const response = await fetch('http://localhost:8000/user/login', configs)
     const userData = await response.json()
     if (userData.auth) {
       setAuth(userData.auth)
@@ -51,7 +51,7 @@ const AccountProvider = ({children}) => {
   
 
   const logout = async () => {
-    const response = await fetch(`http://localhost:5000/user/logout/${account.session_id}`)
+    const response = await fetch(`http://localhost:8000/user/logout/${account.session_id}`)
     const userData = await response.json()
     setAuth(false)
     history.push("/login");

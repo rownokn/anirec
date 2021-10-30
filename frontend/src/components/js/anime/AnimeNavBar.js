@@ -14,7 +14,7 @@ const AnimeNavBar = () => {
       <div className='menu'>
         <button onClick={() => setShow(true)}><i><FontAwesomeIcon icon={faBars} /></i></button>
         <Modal title='Anime Menu' onClose={() => setShow(false)} show={show}>
-        <div class='mobile-navbar'>
+        <div className='mobile-navbar'>
           <ul>
           <li><Link to={`${url}/anime-summary`} onClick={() => setShow(false)} >summary</Link></li>
           <li><Link to={`${url}/episodes`} onClick={() => setShow(false)} >episodes</Link></li>

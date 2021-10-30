@@ -15,7 +15,7 @@ const AnimeSummary = ({animeInfo, anime_id, recommendation}) => {
           <h2>Characters</h2> 
           <div className='content-list'>
         {animeInfo.character.length > 0 ? animeInfo.character.map (char => 
-          <Link to={`${url}/character-profile/${char.id}`}>
+          <Link key={char.id} to={`${url}/character-profile/${char.id}`}>
               <div>
               <img src={char.image} alt='inu' />
               <p>{char.name}</p>

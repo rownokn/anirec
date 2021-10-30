@@ -5,7 +5,7 @@ import Loading from '../Loading'
 import loading_gif from '../../images/13335.gif'
 
 const fetchAnimeCharacter = async (anime_id) => {
-  const response = await fetch(`http://localhost:5000/anime/characters_list/${anime_id}`);
+  const response = await fetch(`http://localhost:8000/anime/characters_list/${anime_id}`);
   return await response.json()
 } 
 
@@ -27,7 +27,7 @@ const AnimeCharacterSummary = ({anime_id}) => {
 
       <div className='content-list'>
         {data.anime_characters ?  (data.anime_characters.length  ? data.anime_characters.map (char => 
-        <Link to={`${url}/character-profile/${char.id}`}>
+        <Link key={char.id} to={`${url}/character-profile/${char.id}`}>
           <div>
             <img src={char.image} alt='inu' />
            <p>{char.name}</p>

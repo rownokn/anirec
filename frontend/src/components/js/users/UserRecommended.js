@@ -13,7 +13,7 @@ const UserRecommended = () => {
     setIsError(false);
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/anime/rec_by_user/${account.account_id}`);
+      const response = await fetch(`http://localhost:8000/anime/rec_by_user/${account.account_id}`);
       const info = await response.json()
       setTimeout(() => {
         setIsLoading(false)
@@ -34,8 +34,8 @@ const UserRecommended = () => {
   return (
     <div>
       {!isLoading ? 
-        <div class='user-rec'>
-        <p class='header'>Recommended For User</p>
+        <div className='user-rec'>
+        <p className='header'>Recommended For User</p>
         <AnimeData animeData={animeList} style={'popular-anime'} />
     </div> : <Loading/>}
     </div>

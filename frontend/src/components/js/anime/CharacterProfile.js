@@ -5,7 +5,7 @@ import Loading from '../Loading'
 
 const fetchCharacterBio = async (character_id) => {
 
-  const response = await fetch(`http://localhost:5000/anime/character/${character_id}`);
+  const response = await fetch(`http://localhost:8000/anime/character/${character_id}`);
   return await response.json()
 } 
 

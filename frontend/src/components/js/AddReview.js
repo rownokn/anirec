@@ -83,7 +83,7 @@ const AddReview = ({animeHandler, animeList, account, anime_id}) => {
             className: 'toast'
           });
         } else{
-          const response = await fetch('http://localhost:5000/user/add_review', config);
+          const response = await fetch('http://localhost:8000/user/add_review', config);
           const userInfo = await response.json();
           toast.success("New Review Added", {
             position: toast.POSITION.TOP_CENTER,
@@ -106,7 +106,7 @@ const AddReview = ({animeHandler, animeList, account, anime_id}) => {
        {animeHandler ?  <select onChange={animeHandler} placeholder='Status'>
               <option value>Anime Name</option>
               {animeList.map ((anime) => 
-                <option value={anime.id}>{anime.title}</option>
+                <option key={anime.id} value={anime.id}>{anime.title}</option>
               )}
               
             </select> : ""}

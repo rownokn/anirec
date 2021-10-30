@@ -15,7 +15,7 @@ const AddUserReview = () => {
   } 
 
   const user = async () => {
-      const response = await fetch(`http://localhost:5000/user/user_favorite`, {
+      const response = await fetch(`http://localhost:8000/user/user_favorite`, {
         method: "POST",
          body: JSON.stringify({
            "user_id": account.account_id

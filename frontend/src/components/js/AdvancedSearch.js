@@ -76,7 +76,7 @@ const AdvancedSearch = () => {
   }
 
   const getAnimeData = async() => {
-    const response = await fetch(`http://localhost:5000/anime/advanced_anime_search`, {
+    const response = await fetch(`http://localhost:8000/anime/advanced_anime_search`, {
       method: 'POST',
       body: JSON.stringify({
         "name": name,
@@ -140,15 +140,15 @@ const AdvancedSearch = () => {
   return (
     <div className='advanced-search'>
         <div className='mobile-search'>
-          <div class='header'><h4>Anime Search</h4></div>
+          <div className='header'><h4>Anime Search</h4></div>
           <label for='anime-name'>Name: </label>
           <input type='text' onChange={animeNameHandler} />
           <label for='genre-name'>Genre: </label>
           <select onChange={genreHandler}>
                 <option></option>
                 {
-                  genres.map(genre => 
-                    <option value={genre}>{genre}</option>
+                  genres.map((genre, id) => 
+                    <option key={id} value={genre}>{genre}</option>
                   )
                 }
           </select>
@@ -156,8 +156,8 @@ const AdvancedSearch = () => {
           <select onChange={tagHandler}>
                     <option></option>
                     {
-                        tags.map(tag => 
-                          <option value={tag}>{tag}</option>
+                        tags.map((tag, id) => 
+                          <option key={id} value={tag}>{tag}</option>
                         )
                     }
           </select>
@@ -165,8 +165,8 @@ const AdvancedSearch = () => {
           <select onChange={studioHandler}>
                     <option></option>
                     {
-                        studios.map(studio => 
-                          <option value={studio}>{studio}</option>
+                        studios.map((studio, id) => 
+                          <option key={id} value={studio}>{studio}</option>
                         )
                     }
           </select>
@@ -182,8 +182,8 @@ const AdvancedSearch = () => {
           <select onChange={formatHandler}>
                     <option></option>
                     {
-                        formats.map(format => 
-                          <option value={format}>{format}</option>
+                        formats.map((format, id) => 
+                          <option key={id} value={format}>{format}</option>
                         )
                     }
           </select>
@@ -191,16 +191,16 @@ const AdvancedSearch = () => {
           <select onChange={statusHandler}>
                     <option></option>
                     {
-                        statuses.map(status => 
-                          <option value={status}>{status}</option>
+                        statuses.map((status ,id) => 
+                          <option key={id}  value={status}>{status}</option>
                         )
                     }
           </select>
           <label for='tag-name'>Date Release Range: </label>
-          <div className='date'><input type='date' onChange={startDateHandler} />&nbsp;&nbsp; <span>To</span> &nbsp;&nbsp; <input type='date' onChange={endDateHandler} /></div>
+          <div className='date'><input type='date' onChange={startDateHandler} /><span>TO</span> <input type='date' onChange={endDateHandler} /></div>
           <label for='tag-name'>Year: </label>
           {disabledYear ? <input id="rangeInput"  type='range' min='1970' max={new Date().getFullYear().toString()} onChange={yearHandler} disabled/> : <input id="rangeInput"  type='range' min='1970' max={new Date().getFullYear().toString()} onChange={yearHandler}/>}
-          <div class='year-display'>
+          <div className='year-display'>
                 <label>{disabledYear ? 'N/A' : year}</label>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; &nbsp; 
                 <label>Disable Year:</label> <input type="checkbox" onChange={disableYear}/>
           </div>   
@@ -224,8 +224,8 @@ const AdvancedSearch = () => {
               <td><select onChange={genreHandler}>
                 <option></option>
                 {
-                  genres.map(genre => 
-                    <option value={genre}>{genre}</option>
+                  genres.map((genre, id) => 
+                    <option key={id} value={genre}>{genre}</option>
                   )
                 }
                 </select>
@@ -233,8 +233,8 @@ const AdvancedSearch = () => {
               <td><select onChange={tagHandler}>
                     <option></option>
                     {
-                        tags.map(tag => 
-                          <option value={tag}>{tag}</option>
+                        tags.map((tag, id) => 
+                          <option key={id} value={tag}>{tag}</option>
                         )
                     }
                   </select>
@@ -249,8 +249,8 @@ const AdvancedSearch = () => {
               <td><select onChange={studioHandler}>
                     <option></option>
                     {
-                        studios.map(studio => 
-                          <option value={studio}>{studio}</option>
+                        studios.map((studio, id) => 
+                          <option key={id} value={studio}>{studio}</option>
                         )
                     }
                   </select>
@@ -265,8 +265,8 @@ const AdvancedSearch = () => {
                 <td><select onChange={formatHandler}>
                     <option></option>
                     {
-                        formats.map(format => 
-                          <option value={format}>{format}</option>
+                        formats.map((format, id) => 
+                          <option key={id} value={format}>{format}</option>
                         )
                     }
                   </select>
@@ -274,14 +274,14 @@ const AdvancedSearch = () => {
           </tr>
           <tr className='header'>
               <td>Status:</td>
-              <td colspan="2">Year:</td>
+              <td colSpan="2">Year:</td>
           </tr>
           <tr className='input'>
               <td><select onChange={statusHandler}>
                     <option></option>
                     {
-                        statuses.map(status => 
-                          <option value={status}>{status}</option>
+                        statuses.map((status , id) => 
+                          <option key={id} value={status}>{status}</option>
                         )
                     }
                   </select>
@@ -290,7 +290,7 @@ const AdvancedSearch = () => {
                 {disabledYear ? <input id="rangeInput"  type='range' min='1970' max={new Date().getFullYear().toString()} onChange={yearHandler} disabled/> : <input id="rangeInput"  type='range' min='1970' max={new Date().getFullYear().toString()} onChange={yearHandler}/>}
 
               </td>
-              <td class='year-display'>
+              <td className='year-display'>
                 {disabledYear ? 'N/A' : year}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; &nbsp; 
                 Disable Year: <input type="checkbox" onChange={disableYear}/>
                 </td>

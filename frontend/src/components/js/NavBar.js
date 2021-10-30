@@ -34,7 +34,7 @@ const NavBar = () => {
                 
                 <li><Link to='/popular-trending' onClick={() => setShowNav(false)}>popular/trending anime</Link></li>
                 <li><Link to='/advanced-search' onClick={() => setShowNav(false)}>advanced search</Link></li>
-                <li><Link class='search-btn' to='#test'  onClick={clickQuickSearch}>quick search</Link>
+                <li><Link className='search-btn' to='#test'  onClick={clickQuickSearch}>quick search</Link>
                 <AnimeQuickSearch setShow={setShowQuickSearch} show={showQuickSearch} />
                 <li><Link to='/login' onClick={logout}>logout</Link></li>
                
@@ -46,7 +46,7 @@ const NavBar = () => {
           </div>
           <nav className='menu'>
           <Link  to='/'><img src={transparent_logo} alt='logo' /></Link>       
-            <div class='main-navbar'> 
+            <div className='main-navbar'> 
               <Link className='main-link' to='/user-profile/anime-list'>Anime List</Link>
               <Link className='main-link' to='/anime-user-rec'>Recommended For User</Link>  
               <div className='main-link dropdown'>
@@ -59,8 +59,8 @@ const NavBar = () => {
             </div>
           <div className='login-bar'> 
               <div></div>
-              <Link class='login-link' to='/login' onClick={logout}><i><FontAwesomeIcon icon={faUser} /></i></Link>  
-              <button class='search-btn' onClick={() => setShowQuickSearch(true)}><i><FontAwesomeIcon icon={faSearch} /></i></button>
+              <Link className='login-link' to='/login' onClick={logout}><i><FontAwesomeIcon icon={faUser} /></i></Link>  
+              <button className='search-btn' onClick={() => setShowQuickSearch(true)}><i><FontAwesomeIcon icon={faSearch} /></i></button>
               <AnimeQuickSearch setShow={setShowQuickSearch} show={showQuickSearch} />
           </div>
         </nav>
@@ -78,10 +78,10 @@ const NavBar = () => {
                 <ul>
                 <li><Link to='/popular-trending' onClick={() => setShowNav(false)}>popular/trending anime</Link></li>
                 <li><Link to='/advanced-search' onClick={() => setShowNav(false)}>advanced search</Link></li>
-                <li><Link class='search-btn' to='#test'  onClick={clickQuickSearch}>quick search</Link>
+                <li><Link className='search-btn' to='#test'  onClick={clickQuickSearch}>quick search</Link>
                 <AnimeQuickSearch setShow={setShowQuickSearch} show={showQuickSearch} />
-                <li><Link to='/signup' onClick={() => setShowNav(false)}>Sign Up</Link> </li>
                 <li><Link to='/login' onClick={() => setShowNav(false)}>Login</Link></li>
+                <li><Link to='/signup' onClick={() => setShowNav(false)}>Sign Up</Link> </li>
 
 
                 </li>
@@ -93,20 +93,20 @@ const NavBar = () => {
           <nav className='menu'>
             <Link  to='/'><img src={transparent_logo} alt='logo' /></Link>       
 
-            <div class='main-navbar'> 
-              <div class='main-link dropdown'>
+            <div className='main-navbar'> 
+              <div className='main-link dropdown'>
                 <button>Browse&nbsp; <i><FontAwesomeIcon icon={faCaretDown} /></i></button>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                     <Link to='/popular-trending'>popular/trending anime</Link>
                     <Link to='/advanced-search'>advanced search</Link>
                 </div>
               </div>              
             </div>
-          <div class='login-bar'> 
+          <div className='login-bar'> 
               <div></div>
-              <Link class='login-link' to='/signup'>Sign Up</Link>  
-              <Link class='login-link' to='/login'>Login</Link>
-              <button class='search-btn' onClick={() => setShowQuickSearch(true)}><i><FontAwesomeIcon icon={faSearch} /></i></button>
+              <Link className='login-link' to='/signup'>Sign Up</Link>  
+              <Link className='login-link' to='/login'>Login</Link>
+              <button className='search-btn' onClick={() => setShowQuickSearch(true)}><i><FontAwesomeIcon icon={faSearch} /></i></button>
               <AnimeQuickSearch setShow={setShowQuickSearch} show={showQuickSearch} />
 
           </div>

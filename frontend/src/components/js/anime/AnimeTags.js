@@ -5,7 +5,7 @@ import Loading from '../Loading'
 import loading_gif from '../../images/13335.gif'
 
 const fetchAnimeTags = async (anime_id) => {
-  const response = await fetch(`http://localhost:5000/anime/tags/${anime_id}`);
+  const response = await fetch(`http://localhost:8000/anime/tags/${anime_id}`);
   return await response.json()
 } 
 
@@ -25,7 +25,7 @@ const AnimeTags = ({anime_id}) => {
       <ul>
         {data.anime_tags ? data.anime_tags.map((tags) => 
           <li>
-            <Link to={`/anime-categories/${tags.name}`}>{tags.name}</Link>
+            <Link key={tags.id} to={`/anime-categories/${tags.name}`}>{tags.name}</Link>
           </li>
         ): <div><img src={loading_gif} alt='loading' /> <h3>No Tags Posted</h3></div>}
       </ul>
