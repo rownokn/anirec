@@ -1,1 +1,0 @@
-from .anime_rec_info import AnimeInfoUtil
