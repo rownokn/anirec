@@ -19,7 +19,7 @@ Recommendations are based on activities and reviews similar to other users.
 Recommendations are also based on other similar anime. 
 
 Here is the database diagram for the anime application
-![Database Diagram](/dbtable)
+![Database Diagram](https://github.com/rnowrose/anirec/blob/main/dbtable.png)
 
 ## Getting Started 
 
