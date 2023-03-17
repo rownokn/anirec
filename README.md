@@ -27,6 +27,7 @@ Recommendation based on review and activty
 More Recommendations based on activty
 ![anime user Recc](https://github.com/rnowrose/anirec/blob/main/userreccanime.png)
 
+Further recommedations are still TBA. 
 
 Here is the database diagram for the anime application
 ![Database Diagram](https://github.com/rnowrose/anirec/blob/main/dbtable.png)
@@ -69,7 +70,9 @@ To Modify the status of the anime users want to watch
 - select on of the anime for example Naruto then it will rediret them to this page
   ![profile](https://github.com/rnowrose/anirec/blob/main/fullprofile.png)
 
-- click on the button that has the 'COMPLETED' written on it and it will direct to this modal
+- click on the button that has 'COMPLETED' written and it will direct to this modal
   ![profile](https://github.com/rnowrose/anirec/blob/main/useractivity.png)
 
-- That is where they can do what they have to do
+- This is where they can provide their status on the anime
+
+This is just one of the features that is included on the application
