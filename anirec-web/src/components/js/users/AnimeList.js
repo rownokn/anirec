@@ -66,7 +66,7 @@ const AnimeList = () => {
               <td><Link key={user.anime_id} to={`/anime-profile/${user.anime_id}/anime-summary`}><img src={user.cover_image} alt='inu' /></Link></td>
               <td>{user.eng_title ? (user.eng_title !== user.name ? user.eng_title + ' (' + user.name + ')' : user.name) :  user.name}</td>
               <td>{user.progress}</td>
-              <td>{user.score}%</td>
+              <td>{user.score > 10 ? user.score/10 : user.score}/10</td>
               <td>{user.status}</td>
             </tr>
           

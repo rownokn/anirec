@@ -58,7 +58,6 @@ const UserReview = ({user_id}) => {
                 </span>
             </div>
             <div className='body'>
-              <h2 className='title'>{rev.eng_title ? (rev.eng_title !== rev.name ? rev.eng_title + ' (' + rev.name + ')' : rev.name) :  rev.name}</h2>
               <p dangerouslySetInnerHTML={{__html: rev.description}} />
               </div>
             

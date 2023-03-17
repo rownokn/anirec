@@ -26,23 +26,13 @@ class ORM:
             where_clause = f'{self.primary_key}={self.__dict__.get(self.primary_key)}'
             sql = f'UPDATE {self.tablename} SET {data_update} where {where_clause} '
             values = [v for v in self.__dict__.values()]
-            print(sql)
-            print(values)
-            cursor.execute(sql,values)
-    
-    def delete(self):
-        with self.db_conn as conn:
-            cursor = conn.cursor()
-            where_clause = f'{self.primary_key}={self.__dict__.get(self.primary_key)}'
-            sql = f"""DELETE FROM {self.tablename} WHERE {where_clause}"""
-            values = [v for v in self.__dict__.values()]
             cursor.execute(sql,values)
     
     @classmethod
     def find_by_id(cls, id):
         with cls.db_conn as conn:
             cursor = conn.cursor()
-            where_clause = f'{cls.primary_key}={id}'
+            where_clause = f'{cls.primary_key}=%s'
             sql = f"SELECT * FROM {cls.tablename} WHERE {where_clause}"
             cursor.execute(sql, [id])
             return  cursor.fetchone()

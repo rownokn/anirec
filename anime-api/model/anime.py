@@ -22,14 +22,6 @@ class Anime(ORM):
         self.summary = summary
         self.english_name = english_name
 
-    
-    @classmethod
-    def update_anime(cls, english_name, id):
-        with cls.db_conn as conn:
-            cursor = conn.cursor()
-            sql = f'UPDATE {cls.tablename} SET english_name=%s  where id=%s '
-            values = [english_name, id]
-            cursor.execute(sql,values)
 
     @classmethod
     def get_similar_anime_by_user_activity(cls, anime_id):  
