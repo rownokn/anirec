@@ -27,20 +27,3 @@ class Character(ORM):
             return cursor.fetchall()
     
     
-
-
-
-class AnimeStaff(ORM):
-    tablename = 'anime_staff'
-    columns = ['staff_name', 'language', 'character_id']
-
-    def __init__(self,staff_name, language, character_id, id=None):
-        self.staff_name = staff_name
-        self.language = language
-        self.character_id = character_id
-        self.id = id
-    
-    def get_by_character_id(character_id):
-        pass
-
-    

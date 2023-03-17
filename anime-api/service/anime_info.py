@@ -1,4 +1,4 @@
-from model import Anime, AnimeEpisodes, Tag, Review,Character,AnimeStudio,AnimeGenre
+from model import Anime, AnimeStudio, AnimeEpisodes, Tag, Review,Character,AnimeGenre
 from api import AnimeInfoUtil
 
 class AnimeInfo:

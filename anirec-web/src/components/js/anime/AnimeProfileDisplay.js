@@ -147,15 +147,15 @@ const AnimeProfileDisplay = ({animeInfo, userActivity, setUserActivity, recommen
                 <p>Aired: {(animeInfo.start_date || animeInfo.end_date ) ? new Date(animeInfo.start_date).toLocaleDateString("en-US")  + " - " +  (animeInfo.end_date ? new Date(animeInfo.end_date).toLocaleDateString("en-US"): "ONGOING"): "TBA"} </p>
                 <p>Season: {animeInfo.season}</p>
 
-                <div>Genres:
-                  <ul>
+                <div><strong>Genres:</strong>
+                  <ul style={{listStyle: 'none'}}>
                     {genre.map((genre,id) => 
                       <Link key={id} to={`/anime-categories/${genre}`}><li>{genre}</li></Link>
                       )}
                   </ul>
                 </div>
-                <div>Studios:
-                  <ul>
+                <div><strong>Studios:</strong>
+                  <ul style={{listStyle: 'none'}}>
                     {studio.map((studio,id) => 
                       <Link key={id} to={`/anime-studio/${studio}`}><li>{studio}</li></Link>
                       )}

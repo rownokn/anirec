@@ -251,7 +251,6 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
             .title{
                 .score{
                     float: left;
-                    margin-top: 5px;
                 }
                 .summary{
                     float: right;
@@ -259,7 +258,6 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
                     white-space: nowrap;
                     overflow: auto;
                     text-overflow: ellipsis;
-                    margin-top: -12px;
                 }
                
                 border-bottom: #8C325B solid;
@@ -326,7 +324,7 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
                 font-size: 2.4ch;
             }
         }
-          width:auto;
+          width:100%;
 
     } 
 
@@ -554,6 +552,9 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
     margin-left: 20px;
     padding: 10px;
     border: #8C325B solid;
+    p, ul {
+        margin: 10px;
+    }
    
 }
 
@@ -564,7 +565,7 @@ $main-font: 'Comfortaa', 'Helvetica', 'serif';
      nav {
         background-color: #FFF4FB;
         text-transform: uppercase;
-        width: 98.5%;
+        width: 100%;
         height: 70px;
         padding: 0 10px;
         margin: auto;

@@ -1,4 +1,6 @@
 from config import DBConfig
+from datetime import  date
+
 
 
 class ORM:
@@ -20,7 +22,7 @@ class ORM:
     def update(self):
         with self.db_conn as conn:
             cursor = conn.cursor()
-            data_update = ", ".join([f"{k}='{v}'" for k,v in self.__dict__.items()])
+            data_update = ", ".join([f"{k}=%s" for k in self.__dict__.keys()])
             where_clause = f'{self.primary_key}={self.__dict__.get(self.primary_key)}'
             sql = f'UPDATE {self.tablename} SET {data_update} where {where_clause} '
             values = [v for v in self.__dict__.values()]

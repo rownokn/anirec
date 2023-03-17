@@ -1,12 +1,13 @@
 from util import UserData, AnimeData, CharacterData
 
-AnimeData.insert_into_database()
+
+#AnimeData.insert_into_database()
 #insert_anime_character()
-#import_tag_data()
+#AnimeData.import_tag_data()
 #AnimeData.anime_episodes()
 #AnimeData.import_genre()
 #AnimeData.import_studio()
-#AnimeData.import_anime_tag()
+AnimeData.import_anime_tag()
 #insert_staff_data()
 #import_into_users_data()
 #UserData.user_activty()

@@ -24,6 +24,7 @@ const AddReview = ({animeHandler, animeList, account, anime_id}) => {
   const descriptionHandler = e => {
     setDescription(e.target.value)
   }
+  console.log(account)
 
   const addReview = async () => {
     try {
@@ -115,7 +116,7 @@ const AddReview = ({animeHandler, animeList, account, anime_id}) => {
        <input type='text' placeholder='Summary'  onChange={summaryHandler} />
        <textarea  placeholder='Description' rows="10" cols="100"  onChange={descriptionHandler}>
       </textarea>
-       <button onClick={addReview}>submit</button>
+       <button onClick={addReview} disabled={!account.account_id}>submit</button>
        
     </div>
     

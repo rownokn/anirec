@@ -35,10 +35,6 @@ const AnimeProfile = () => {
       setRecommendation(info.recommendation)
       setActivitiesExist(info.activity_exist)
       setFavExist(info.favorite_exist)
-   
-      
-      
-      
 
     }catch (err){
       console.error(err)

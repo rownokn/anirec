@@ -32,7 +32,7 @@ const NavBar = () => {
                 <li> <Link to='/user-profile/anime-list' onClick={() => setShowNav(false)} >Anime List</Link></li>
                 <li><Link to='/anime-user-rec' onClick={() => setShowNav(false)}>Recommended For User</Link> </li>
                 
-                <li><Link to='/popular-trending' onClick={() => setShowNav(false)}>popular/trending anime</Link></li>
+                <li><Link  to='/popular-trending' onClick={() => setShowNav(false)}>popular/trending anime</Link></li>
                 <li><Link to='/advanced-search' onClick={() => setShowNav(false)}>advanced search</Link></li>
                 <li><Link className='search-btn' to='#test'  onClick={clickQuickSearch}>quick search</Link>
                 <AnimeQuickSearch setShow={setShowQuickSearch} show={showQuickSearch} />

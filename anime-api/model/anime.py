@@ -133,6 +133,7 @@ class Anime(ORM):
                       where 1=1  """
             
             values = []
+
             if name:
                 sql += ' and a.name ilike ANY (array[%s, %s, %s]) or a.english_name ilike ANY (array[%s, %s, %s])'
                 values.append('%' + name + '%')

@@ -33,7 +33,7 @@ const UserAnimeDisplay = ({anime_id}) => {
 
   return (
     <div >    
-      {isError ? <div className='rec'><img src={error_gif} alt='error_gif'/><h3>Error</h3></div> : (!isLoading ? <span>
+      {isError ? <div className='rec'><img src={error_gif} alt='error_gif'/><h3>No Recommendations</h3></div> : (!isLoading ? <span>
       <h3>Similar Anime That Users Watched</h3>
       <AnimeData animeData={animeReview} style={'content-list'}/>
       

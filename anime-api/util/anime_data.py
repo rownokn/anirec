@@ -91,13 +91,11 @@ class AnimeData:
                 existing_anime_data=Anime.find_by_id(ani['id'])
                 if existing_anime_data:
                     for ep in ani['streamingEpisodes']:
-                        print(ep['title'])
-                        print(ep['url'])
-                        print(ep['site'])
-                        ani_ep = AnimeEpisodes.get_by_anime_id(ani['id'])
-                        anime_ep = AnimeEpisodes(ep['title'],ep['url'], ep['site'], ani['id'] )
-                        if not ani_ep:
+                                              
+                        if not AnimeEpisodes.get_episode(ep['title'], ep['url'], ep['site']):
+                            anime_ep = AnimeEpisodes(ep['title'],ep['url'], ep['site'], ani['id'] )
                             anime_ep.insert()
+                        
 
             page += 1
             anime = AnimeData.anime_data(page)
@@ -107,36 +105,36 @@ class AnimeData:
 
     @staticmethod
     def import_anime_tag():
-        page = 328
+        page = 0
         anime = AnimeData.anime_data(page)
-        while page < 334:
+        while page < 800:
             for ani in anime['media']:
                 existing_anime_data=Anime.find_by_id(ani['id'])
                 if existing_anime_data:
                     for tag in ani['tags']:
-                        print(ani['id'])
-                        print(tag['id'])
                         a_tag = AnimeTag.get_by_anime_id(ani['id'])
                         ani_tag = AnimeTag(tag['id'], ani['id'])
-                        if not a_tag and ani['id'] > 138723:
+                        if not a_tag:
+                            print(ani['id'])
+                            print(tag['id'])
                             ani_tag.insert()
             page += 1
             anime = AnimeData.anime_data(page)
 
     @staticmethod
     def import_studio():
-        page = 328
+        page = 0
         anime = AnimeData.anime_data(page)
-        while page < 334:
+        while page < 800:
             for ani in anime['media']:
                 existing_anime_data=Anime.find_by_id(ani['id'])
                 if existing_anime_data:
                     for std in ani['studios']['nodes']:
-                        print(ani['id'])
-                        print(std['name'])
                         s_tag = AnimeStudio.get_by_anime_id(ani['id'])
                         ani_studio = AnimeStudio(ani['id'],std['name'] )
-                        if ani['id'] > 138717:
+                        if not s_tag:
+                            print(ani['id'])
+                            print(std['name'])
                             ani_studio.insert()
                 
             page += 1
@@ -145,19 +143,18 @@ class AnimeData:
 
     @staticmethod
     def import_genre():
-        page = 329
+        page = 0
         anime = AnimeData.anime_data(page)
-        while page < 334:
+        while page < 900:
             for ani in anime['media']:
                 existing_anime_data=Anime.find_by_id(ani['id'])
                 if existing_anime_data:
-                    print(ani['genres'])
                     genres = ani['genres']
                     for g in genres:
-                        print(ani)
-                        g_tag = AnimeStudio.get_by_anime_id(ani['id'])
+                        g_tag = AnimeGenre.get_by_anime_id(ani['id'])
                         ani_genre = AnimeGenre(g,ani['id'] )
-                        if not g_tag and ani['id'] >= 138882:
+                        if not g_tag:
+                            print(ani['genres'])
                             ani_genre.insert()
             page += 1
             anime = AnimeData.anime_data(page)
@@ -169,7 +166,9 @@ class AnimeData:
         tags = AnimeData.tag_data()
         for tag in tags:
             t = Tag(tag['id'], tag['name'], tag['description'], tag['category'])
-            t.insert()
+            tagdata = Tag.find_by_id(tag['id'])
+            if not tagdata:
+                t.insert()
 
 
     @staticmethod
@@ -181,7 +180,7 @@ class AnimeData:
             
             for ani in anime['media']:
                 existing_anime_data=Anime.find_by_id(ani['id'])
-                """
+                
                 start_date = None
                 end_date = None
                 season = None
@@ -195,28 +194,26 @@ class AnimeData:
                 
                 if ani['startDate']['year'] and ani['startDate']['month'] and ani['startDate']['day']:
                     start_date = datetime.date(ani['startDate']['year'], ani['startDate']['month'], ani['startDate']['day'])
+                
+                anime_modify = Anime(ani['id'],
+                                    ani['title']['userPreferred'],
+                                    ani['title']['native'],
+                                    season,
+                                    ani['episodes'] if ani['episodes'] else 0, 
+                                    ani['status'],
+                                    ani['format'],
+                                    start_date if start_date else None,
+                                    end_date if end_date else None, 
+                                    ani['averageScore'],
+                                    ani['coverImage']['large'],
+                                    ani['bannerImage'], ani['description'].replace("\'", "") if ani['description'] else "", ani['title']['english'] if ani['title']['english'] else "")
 
-                """       
-                    
                 if existing_anime_data:
-                    Anime.update_anime(ani['title']['english'] ,ani['id'] )
-                    """
-                    else:
-                        anime_insert = Anime(ani['id'],
-                                        ani['title']['userPreferred'],
-                                        ani['title']['native'],
-                                        ani['description'].replace("\'", "") if ani['description'] else "",
-                                        season,
-                                        ani['episodes'] if ani['episodes'] else 0, 
-                                        ani['status'],
-                                        ani['format'],
-                                        start_date if start_date else None,
-                                        end_date if end_date else None, 
-                                        ani['averageScore'],
-                                        ani['coverImage']['large'],
-                                        ani['bannerImage'])
-                        anime_insert.insert()
-                    """
+                    anime_modify.update()
+                else:    
+                    anime_modify.insert()
+                    print(f"{ani['id']} {ani['title']['english']}")
+                    
             page += 1
             anime = AnimeData.anime_data(page)
 

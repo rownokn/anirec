@@ -20,6 +20,14 @@ class AnimeEpisodes(AnimeUitl, ORM):
         self.site = site
         self.anime_id = anime_id
         self.id = id
+    
+    @classmethod
+    def get_episode(cls, name, url, site):
+        with cls.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"select * from {cls.tablename} where name=%s and url=%s and site=%s"
+            cursor.execute(sql, [name, url, site])
+            return cursor.fetchone()
             
 
 class AnimeTag(AnimeUitl, ORM):
@@ -44,10 +52,10 @@ class AnimeGenre(AnimeUitl, ORM):
     def get_all_genres(cls):
          with cls.db_conn as conn:
             cursor = conn.cursor()
-            sql = f"select distinct(name) from anime_genre"
+            sql = f"select distinct(name) from {cls.tablename}"
             cursor.execute(sql)
             return cursor.fetchall()
-    
+
 class AnimeStudio(AnimeUitl, ORM):
     tablename= 'anime_studio'
     columns = ['anime_id', 'studio_name']
@@ -61,7 +69,7 @@ class AnimeStudio(AnimeUitl, ORM):
     def get_all_studios(cls):
          with cls.db_conn as conn:
             cursor = conn.cursor()
-            sql = f"select distinct(studio_name) from anime_studio"
+            sql = f"select distinct(studio_name) from {cls.tablename}"
             cursor.execute(sql)
             return cursor.fetchall()
     
@@ -73,6 +81,14 @@ class AnimeCharacter(AnimeUitl, ORM):
         self.anime_id = anime_id
         self.character_id = character_id
         self.id = id
+
+    @classmethod
+    def get_by_anime_character(cls, anime_id, character_id):
+        with cls.db_conn as conn:
+            cursor = conn.cursor()
+            sql = f"select * from {cls.tablename} where anime_id=%s and character_id=%s"
+            cursor.execute(sql, [anime_id, character_id])
+            return cursor.fetchone()
         
 
 

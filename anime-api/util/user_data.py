@@ -196,7 +196,7 @@ class UserData:
         page = 1
         anime_review = UserData.user_review_data(page)
     
-        while page < 160:
+        while page < 300:
             for rev in anime_review:
                 existing_users = Users.find_by_id(rev['userId'])
                 anime = Anime.find_by_id(rev['mediaId'])
@@ -223,7 +223,7 @@ class UserData:
     def user_activty():
         page = 1
         users = UserData.user_activity_data(page)
-        while page <= 15:
+        while page <= 40:
             for user in users['mediaList']:
                 existing_users = Users.find_by_id(user['userId'])
                 anime = Anime.find_by_id(user['mediaId'])
